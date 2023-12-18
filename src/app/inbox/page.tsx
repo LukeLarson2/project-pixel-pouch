@@ -1,8 +1,8 @@
 'use client';
 
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import {useRouter} from 'next/navigation';
-import {useState, useEffect} from 'react';
+import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 
 import { FaCheck } from "react-icons/fa";
 
@@ -37,40 +37,49 @@ type User = {
 
 export default function Inbox() {
   const [messages, setMessages] = useState<MessageItem[] | null>(null);
+  const [isLoading, setIsLoading] = useState(false)
 
   const supabase = createClientComponentClient();
   const router = useRouter();
 
   const getMessages = async () => {
+    setIsLoading(true)
     const result = await getUser();
     if (result && Array.isArray(result) && 'client_id' in result[0]) {
-      const user: User = result [0];
+      const user: User = result[0];
 
-      const {data, error} = await supabase
+      const { data, error } = await supabase
         .from('messages')
         .select()
         .eq('user_id', user.client_id)
-        .order('date_added', {ascending: false});
+        .order('date_added', { ascending: false });
 
-        if(error) {
-          console.error(error);
-          return;
-        }
-        setMessages(data);
+      if (error) {
+        console.error(error);
+        setIsLoading(false)
+        return;
+      }
+      setMessages(data);
     }
+    setIsLoading(false)
   }
 
-  const handleGoToMessage = (id:string) => {
+  const handleGoToMessage = (id: string) => {
     router.push(`/inbox/${id}`)
   }
 
   useEffect(() => {
     getMessages();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [supabase])
 
   return messages && (
     <div className="all-messages">
+      {isLoading && (
+        <div className="loader-container">
+          <span className="loader"></span>
+        </div>
+      )}
       <h2>Inbox</h2>
       {messages.map((message) => {
         const date = formatTimeAgo(message.date_added)

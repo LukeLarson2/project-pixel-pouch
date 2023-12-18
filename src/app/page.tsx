@@ -13,14 +13,9 @@ export default function Home() {
 
   const supabase = createClientComponentClient();
 
-  const handleSignOut = async () => {
-    setIsLoading(true)
-    await supabase.auth.signOut();
-    window.location.reload();
-  };
   return (
     <main >
-      <button onClick={() => handleSignOut()}>Sign Out</button>
+      Home
     </main>
   )
 }
