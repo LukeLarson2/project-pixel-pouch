@@ -15,7 +15,7 @@ import { useRouter } from 'next/navigation';
 import '../_stylesheets/navbar.css'
 
 type MessageItem = {
-  todo_id: string;
+  todo_id: number;
   title: string;
   message: string;
   viewed: boolean;
@@ -48,7 +48,7 @@ export default function NavBar() {
   const [userData, setUserData] = useState<User | null>(null);
   const [showPreview, setShowPreview] = useState(false);
   const [inbox, setInbox] = useState<MessageItem[]>([]);
-  const [newMessages, setNewMessages] = useState<string[]>([]);
+  const [newMessages, setNewMessages] = useState<MessageItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const supabase = createClientComponentClient();
@@ -71,7 +71,7 @@ export default function NavBar() {
   }
 
   const closeModals = () => {
-    setShowPreview(true)
+    setShowPreview(false)
   }
 
   const goToProjects = () => {
@@ -126,7 +126,7 @@ export default function NavBar() {
       setNewMessages(newMessages)
     }
 
-    setInbox(newMessages as MessageItem[])
+    // setInbox(newMessages as MessageItem[])
     setIsLoading(false)
   }
 
@@ -190,9 +190,9 @@ export default function NavBar() {
             <div className="right-nav">
               <div className="nav-profile">Welcome back, {userData?.username}</div>
               <div className="inbox">
-                {/* {showPreview && <InboxPreview todoIds={newMessages} closePreview={() => setShowPreview(false)} onViewMessage={handleViewMessage} ref={inboxPreviewRef} />} */}
-                {inbox.length > 0 && <FaExclamationCircle className="notification" />}
-                <FaInbox className="icon" onClick={handleViewPreview} />
+                {showPreview && <InboxPreview newMessages={newMessages} closePreview={() => setShowPreview(false)} onViewMessage={handleViewMessage} ref={inboxPreviewRef} />}
+                {newMessages.length > 0 && <FaExclamationCircle className="notification" />}
+                <FaInbox className="icon" onClick={() => handleViewPreview()} />
               </div>
               <IoSettingsSharp className="icon" onClick={goToSettings} />
             </div>
