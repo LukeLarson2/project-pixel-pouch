@@ -59,8 +59,8 @@ export default function NavBar() {
   const companyImage = '/assets/images/pixel-sky-design-logo-small.png';
 
   const navLinks = [
-    {name: 'My Projects', href: '/'},
-    {name: 'Inbox', href:'/inbox'}
+    { name: 'My Projects', href: '/' },
+    { name: 'Inbox', href: '/inbox' }
   ]
 
   const handleViewPreview = () => {
@@ -89,12 +89,12 @@ export default function NavBar() {
       setIsLoading(false);
       return;
     }
-    const {data: {user}} = await supabase.auth.getUser();
+    const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
       setIsLoading(false)
       return;
     }
-    const {data, error} = await supabase
+    const { data, error } = await supabase
       .from('users')
       .select()
       .eq('email', user?.email)
@@ -112,22 +112,22 @@ export default function NavBar() {
       .filter('viewed', 'eq', false)
       .filter('user_id', 'eq', data.client_id);
 
-      if (messagesError) {
-        console.error(messagesError)
-        setIsLoading(false)
-        return;
-      }
-
-      setUserData(data)
-      // const notViewed = newMessages.filter((item) => item.viewed === false);
-      // const todoIds = notViewed.map((item) => item.todo_id);
-
-      if (newMessages) {
-        setNewMessages(newMessages)
-      }
-
-      setInbox(newMessages as MessageItem[])
+    if (messagesError) {
+      console.error(messagesError)
       setIsLoading(false)
+      return;
+    }
+
+    setUserData(data)
+    // const notViewed = newMessages.filter((item) => item.viewed === false);
+    // const todoIds = notViewed.map((item) => item.todo_id);
+
+    if (newMessages) {
+      setNewMessages(newMessages)
+    }
+
+    setInbox(newMessages as MessageItem[])
+    setIsLoading(false)
   }
 
   const handleViewMessage = async (id: string) => {
@@ -136,9 +136,9 @@ export default function NavBar() {
       return;
     }
 
-    const {error} = await supabase
+    const { error } = await supabase
       .from('messages')
-      .update({viewed: true})
+      .update({ viewed: true })
       .eq('todo_id', id)
 
     if (error) {
@@ -152,7 +152,7 @@ export default function NavBar() {
 
   useEffect(() => {
     checkUser()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [supabase])
 
   useEffect(() => {
@@ -178,8 +178,8 @@ export default function NavBar() {
           <div className='nav-prof'>
             <div className='nav-links'>
               {navLinks.map((link) => {
-                const isActive = link.href ==='/'
-                ? pathname === link.href : pathname.startsWith(link.href);
+                const isActive = link.href === '/'
+                  ? pathname === link.href : pathname.startsWith(link.href);
                 return (
                   <Link href={link.href} onClick={closeModals} key={link.name} className={isActive ? "active-link" : "nav-link"}>
                     {link.name}
@@ -188,18 +188,18 @@ export default function NavBar() {
               })}
             </div>
             <div className="right-nav">
-              <div className="nav-profile">
-                Welcome back, {userData?.username}</div>
-              </div>
+              <div className="nav-profile">Welcome back, {userData?.username}</div>
               <div className="inbox">
                 {/* {showPreview && <InboxPreview todoIds={newMessages} closePreview={() => setShowPreview(false)} onViewMessage={handleViewMessage} ref={inboxPreviewRef} />} */}
                 {inbox.length > 0 && <FaExclamationCircle className="notification" />}
                 <FaInbox className="icon" onClick={handleViewPreview} />
+              </div>
+              <IoSettingsSharp className="icon" onClick={goToSettings} />
             </div>
           </div>
         </div>
         <div className='main-links'>
-          <div className="company-image" style={{backgroundImage: `url(${companyImage})`}} />
+          <div className="company-image" style={{ backgroundImage: `url(${companyImage})` }} />
         </div>
       </div>
     </div>
