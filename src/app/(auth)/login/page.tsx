@@ -31,17 +31,17 @@ export default function Login() {
   const handleSignUp = async () => {
     const {data: existingUser, error: userError} = await supabase
       .from('users')
-      .select('email')
+      .select()
       .eq('email', email)
-      .single()
+      .single();
 
     if (existingUser) {
       setSignUpError('An account already exists with that email');
       return;
     }
 
-    if (userError) {
-      console.error('Error checking for existing user: ', userError.message);
+    if (userError && existingUser !== null) {
+      console.error('Error checking for existing user: ', userError);
       setSignUpError('Error during sign up');
       return;
     }
@@ -136,7 +136,7 @@ export default function Login() {
       } else if (password.length < 6) {
         setPasswordError('Password must be at least 6 characters');
       } else {
-        setPassword('');
+        setPasswordError('');
       }
     }, 500)
     return () => clearTimeout(debounce)
@@ -171,7 +171,7 @@ export default function Login() {
           type="password"
           name="password"
           value={password}
-          onChange={(e) => e.target.value}
+          onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
         />
         {passwordError && <div className="error-message">{passwordError}</div>}
