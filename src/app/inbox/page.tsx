@@ -85,7 +85,7 @@ export default function Inbox() {
         const date = formatTimeAgo(message.date_added)
         const formMessage = truncateString(message.message, 100);
         return (
-          <div className='singlemessage-container-all' key={`${message.todo_id}`} onClick={() => handleGoToMessage(`${message.todo_id}`)}>
+          <div className='single-message-container-all' key={`${message.todo_id}`} onClick={() => handleGoToMessage(`${message.todo_id}`)}>
             {message.complete && <div className="message-completed"><FaCheck /> Completed</div>}
             <p className="message-time-ago-all">Sent {date}</p>
             <h3 className="message-title-all">{message.title}</h3>

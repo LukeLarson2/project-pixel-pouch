@@ -199,7 +199,7 @@ export default function NavBar() {
           </div>
         </div>
         <div className='main-links'>
-          <div className="company-image" style={{ backgroundImage: `url(${companyImage})` }} />
+          <div className="company-img" style={{ backgroundImage: `url(${companyImage})` }} />
         </div>
       </div>
     </div>
