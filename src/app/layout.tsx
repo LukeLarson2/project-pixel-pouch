@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Footer from './_components/Footer';
 
 import './style.css'
 
@@ -18,7 +19,7 @@ export default function RootLayout({
         <header>
         </header>
         <section >{children}</section>
-        <footer></footer>
+        <footer><Footer /></footer>
       </body>
     </html>
   )
