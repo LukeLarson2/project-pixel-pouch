@@ -117,3 +117,12 @@
 .forgot-password:hover {
   color:#6C94C755
 }
+
+.company-logo {
+  width: 250px;
+  height: 150px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-top: 30px;
+}

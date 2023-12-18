@@ -153,7 +153,7 @@ export default function Login() {
   return (
     <div className='login-main-container'>
       <div className="logo-login">
-        <div className='compant-logo' style={{backgroundImage: `url(${companyLogo})`}} />
+        <div className='company-logo' style={{backgroundImage: `url(${companyLogo})`}} />
       </div>
       <div className="login-modal" style={{height: (emailError || passwordError || signInError || signUpError) ? '400px' : '350px'}}>
         <h2>Login</h2>
