@@ -182,7 +182,7 @@ export default function Login() {
           className="login-sign-in-btn"
           type='button'
           disabled={!!(emailError || passwordError)}
-          onClick={handleSignIn}
+          onClick={() => handleSignIn()}
           >
           Sign In
         </button>
@@ -191,7 +191,7 @@ export default function Login() {
           className="login-sign-out-btn"
           type='button'
           disabled={!!(emailError || passwordError)}
-          onClick={handleSignUp}
+          onClick={() => handleSignUp()}
           >
           Sign Up
         </button>
