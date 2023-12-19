@@ -121,7 +121,7 @@ export default function Login() {
     }
 
     if (data[0].admin) {
-      router.replace('/admin')
+      router.replace('/admin/clients')
       return;
     }
     router.replace('/');

@@ -23,6 +23,7 @@
   overflow-y: scroll;
   padding-left: 20px;
   padding-right: 20px;
+  background-color: #fff;
 }
 .admin-client-collection::-webkit-scrollbar {
   display: none;
@@ -49,6 +50,7 @@
   padding-right: 20px;
   margin-right: 20px;
   overflow-y: scroll;
+  background-color: #fff;
 }
 
 
@@ -61,6 +63,7 @@
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
+  margin-bottom: 10px;
   transition: scale .2s ease-in-out, opacity .2s ease-in-out;
 }
 
@@ -73,6 +76,7 @@
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
+  margin-bottom: 10px;
   transition: scale .2s ease-in-out, opacity .2s ease-in-out;
 }
 
@@ -130,4 +134,53 @@
 
 .branch-icon-type {
   margin-right: 5px;
+}
+
+.admin-add-to-collection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 90%;
+  width:90%;
+  height: 40px;
+  padding: 10px;
+  box-shadow: 1px 1px 2px #00000080;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: scale .2s ease-in-out, opacity .2s ease-in-out;
+}
+
+.admin-add-to-collection:hover {
+  scale: .97;
+  opacity: 50%;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutToLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.sliding-in {
+  animation: 0.7s ease-in-out 0s 1 slideInFromLeft;
+}
+
+.sliding-out {
+  animation: 0.7s ease-in-out 0s 1 slideOutToLeft;
 }

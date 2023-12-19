@@ -7,6 +7,8 @@ import { useState, useEffect } from 'react';
 import DirectoryTree from '../../_components/DirectoryTree';
 import AdminFilePreview from "../../_components/AdminFilePreview";
 
+import { FaPlus } from "react-icons/fa";
+
 import './style.css'
 
 type ClientItem = {
@@ -30,6 +32,7 @@ export default function Clients() {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null)
   const [showPreview, setShowPreview] = useState(false)
   const [filePreviewId, setFilePreviewId] = useState('')
+  const [selectedDirId, setSelectedDirId] = useState('')
 
   const supabase = createClientComponentClient();
 
@@ -78,6 +81,20 @@ export default function Clients() {
     setShowPreview(value)
   ]
 
+  const handleClientClick = (client_id:string) => {
+    if (selectedClient === client_id) {
+      // Start slide-out animation
+      setSelectedClient('');
+    } else {
+      // Directly select new client
+      setSelectedClient(client_id);
+    }
+  };
+
+  useEffect(() => {
+    setSelectedProject(null)
+  }, [selectedClient])
+
   useEffect(() => {
     getClients()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -90,7 +107,7 @@ export default function Clients() {
           <span className="loader"></span>
         </div>
       )}
-      <div className="admin-client-collection">
+      <div className="admin-client-collection" style={{zIndex: "10"}}>
         <h2>Clients</h2>
         {clients.map((client) => {
           return (
@@ -99,9 +116,10 @@ export default function Clients() {
             </div>
           )
         })}
+        <button type="button" className="admin-add-to-collection"><FaPlus /></button>
       </div>
       {projects.length > 0 && (
-        <div className="admin-client-collection">
+        <div className={`admin-client-collection ${selectedClient ? 'sliding-in' : 'sliding-out'}`} style={{zIndex: "5"}}>
           <h2>Projects</h2>
           {projects.map((project) => {
             return (
@@ -111,10 +129,11 @@ export default function Clients() {
             )
           })
           }
+          <button type="button" className="admin-add-to-collection"><FaPlus /></button>
         </div>
       )}
       {selectedProject && (
-        <div className="admin-client-collection-files">
+        <div className={`admin-client-collection-files ${selectedProject ? 'sliding-in' : 'sliding-out'}`} style={{zIndex: "1"}}>
           <h2>Files</h2>
           <DirectoryTree dirId={selectedProject.root_dir} handleViewPreview={handleViewPreview} />
         </div>

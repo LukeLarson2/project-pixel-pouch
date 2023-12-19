@@ -63,7 +63,7 @@ export default function NavBar() {
   ]
 
   const adminLinks = [
-    { name: 'Current Clients', href: '/admin/clients' },
+    { name: 'Clients Dashboard', href: '/admin/clients' },
     { name: 'Add Client', href: '/admin/add-client' }
   ]
 
