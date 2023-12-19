@@ -4,12 +4,14 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import './style.css'
+import './_stylesheets/files.css'
 import getUser from "./_utils/getUser";
 import AddFileModal from "./_components/AddFileModal";
 import { IoArrowBack } from "react-icons/io5";
-import { FaRegFolderOpen } from "react-icons/fa";
-import { FaFileAlt, FaFileImage, FaFilePdf, FaFileExcel, FaPlus } from "react-icons/fa";
 import { MdFileDownload } from "react-icons/md";
+import { FaRegFolderOpen } from "react-icons/fa6";
+
+import { FaFileAlt, FaFileImage, FaFilePdf, FaFileExcel, FaPlus } from "react-icons/fa";
 
 type File = {
   file_id: number;
@@ -35,7 +37,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [dirs, setDirs] = useState<Dir[] | []>([]);
   const [files, setFiles] = useState<File[] | []>([]);
-  // const [historyStack, setHistoryStack] = useState<string[]>([]);
+  const [historyStack, setHistoryStack] = useState<string[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [currentDirId, setCurrentDirId] = useState('')
 
@@ -103,6 +105,7 @@ export default function Home() {
           setIsLoading(false)
           return;
         }
+
         setDirs(rootDirectoryData || [])
         setFiles([])
         setIsLoading(false)
@@ -110,18 +113,17 @@ export default function Home() {
     }
   }
 
-  const getDirectoryDetails = async (dirId: string) => {
-    // if (!back && dirId !== '') {
-    //   setHistoryStack(prevStack => [...prevStack, dirId])
-    // }
+  const getDirectoryDetails = async (dirId: string, back = false) => {
+    if (!back && dirId !== '') {
+      setHistoryStack(prevStack => [...prevStack, dirId])
+    }
 
-    setCurrentDirId(dirId)
 
     setIsLoading(true);
     const { data: dirData, error: dirError } = await supabase
-      .from('directories')
-      .select()
-      .eq('parent_dir', dirId);
+    .from('directories')
+    .select()
+    .eq('parent_dir', dirId);
 
     if (dirError) {
       console.error(dirError)
@@ -129,6 +131,7 @@ export default function Home() {
       return;
     }
 
+    setCurrentDirId(dirId)
     const { data: filesData, error: filesError } = await supabase
       .from('files')
       .select()
@@ -144,9 +147,18 @@ export default function Home() {
     setIsLoading(false)
   }
 
-  const goBack = async (parentDir: string) => {
-    if (parentDir !== null) {
-      await getDirectoryDetails(parentDir)
+  const goBack = async () => {
+    if (historyStack.length > 0) {
+      const newHistory = [...historyStack];
+      newHistory.pop(); // Remove the current directory from the history stack
+      const prevDirId = newHistory.length > 0 ? newHistory[newHistory.length - 1] : '';
+      setHistoryStack(newHistory);
+      if (prevDirId) {
+        await getDirectoryDetails(prevDirId, true);
+      } else {
+        // If there is no previous directory, fetch the root directory
+        await getRootDirectory();
+      }
     }
   }
 
@@ -176,8 +188,8 @@ export default function Home() {
           <span className="loader"></span>
         </div>
       )}
-      {(dirs.length > 0 && dirs[0].parent_dir !== null) && (
-        <IoArrowBack className="nav-back-icon" onClick={() => goBack(`${dirs[0].parent_dir}`)} />
+      {historyStack.length > 0 && (
+        <IoArrowBack className="nav-back-icon" onClick={() => goBack()} />
       )}
       {!isLoading && (
         <>
@@ -214,7 +226,7 @@ export default function Home() {
               </div>
             )
           })}
-          {(dirs.length > 0 && dirs[0].parent_dir !== null) && (
+          {historyStack.length > 0 && (
             <div className="add-file-container" onClick={() => handleAddFile(true)}>
               <FaPlus className="add-icon" />
             </div>
