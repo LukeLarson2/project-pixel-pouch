@@ -7,6 +7,7 @@ import { IoArrowBack } from "react-icons/io5";
 import formatTimeAgo from '../../_utils/formatTimeAgo';
 import downloadFile from '../../_utils/downloadFile';
 import { useRouter } from 'next/navigation';
+import AddFileModal from '@/app/_components/AddFileModal';
 
 type MessageItem = {
   todo_id: number;
@@ -112,7 +113,9 @@ export default function MessageDetails({
           <span className="loader"></span>
         </div>
       )}
-      {/* Insert add modal condition here */}
+      {showModal && (
+        <AddFileModal handleAddFile={handleAddFile} currentDirId={`${message.dir_id}`} />
+      )}
       <div className='back-to-inbox' onClick={handleToInbox}><IoArrowBack /> Back to inbox</div>
       <h2 className="message-title">Subject: {message.title}</h2>
       <p className="message-time-ago">Sent {timeAgo}</p>
