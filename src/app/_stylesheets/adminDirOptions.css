@@ -1,0 +1,135 @@
+.admin-dir-options-overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  background-color: #00000080;
+}
+.admin-dir-options-modal button{
+  width: 90%;
+  height: auto;
+  box-shadow: 1px 1px 2px #00000080;
+  background-color: #63C6AE;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: scale .2s ease-in-out, opacity .2s ease-in-out;
+  outline: none;
+  border: none;
+}
+
+.admin-dir-options-modal button:hover {
+  scale: .97;
+  opacity: 50%;
+}
+.admin-dir-options-modal{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 250px;
+  background-color: #fff;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px #00000080;
+  padding: 20px;
+  position: relative;
+}
+
+.admin-dir-options-modal h2 {
+  margin: 0px;
+}
+
+.add-dir-name-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  background-color: #00000080;
+}
+
+.close-options {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+  transition: scale .2s ease-in-out;
+}
+
+.close-options:hover {
+  scale: .95
+}
+.close-options-name {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  transition: scale .2s ease-in-out;
+}
+
+.close-options-name:hover {
+  scale: .95
+}
+
+.add-dir-name-modal {
+  display: flex;
+  width: 400px;
+  height: 200px;
+  flex-direction: column;
+  background-color: #fff;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px #00000080;
+  position: relative;
+}
+.add-dir-name-modal h2{
+  margin: 0px;
+}
+.add-dir-name-modal button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55%;
+  height: 30px;
+  box-shadow: 1px 1px 2px #00000080;
+  background-color: #63C6AE;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: scale .2s ease-in-out, opacity .2s ease-in-out;
+  outline: none;
+  border: none;
+}
+
+.add-dir-name-modal button:hover {
+  scale: .97;
+  opacity: 50%;
+}
+
+.add-dir-name-modal input{
+height: 10px;
+width: 50%;
+padding: 10px;
+border: none;
+outline: none;
+box-shadow: 1px 1px 2px #00000080;
+border-radius: 10px;
+}

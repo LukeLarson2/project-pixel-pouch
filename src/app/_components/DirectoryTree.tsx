@@ -13,6 +13,7 @@ import '../admin/clients/style.css'
 type DirectoryTreeProps = {
   dirId: number;
   handleViewPreview: (value: boolean, id: string) => void;
+  handleOptions: (value: boolean, id: string) => void;
 };
 
 type File = {
@@ -34,7 +35,7 @@ type Dir = {
   parent_dir: number;
 }
 
-const DirectoryTree: React.FC<DirectoryTreeProps> = ({ dirId, handleViewPreview }) => {
+const DirectoryTree: React.FC<DirectoryTreeProps> = ({ dirId, handleViewPreview, handleOptions }) => {
   const [subDirectories, setSubDirectories] = useState<Dir[] | null>(null);
   const [files, setFiles] = useState<File[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -89,9 +90,9 @@ const DirectoryTree: React.FC<DirectoryTreeProps> = ({ dirId, handleViewPreview 
     <>
       {subDirectories?.map(dir => (
         <div key={dir.dir_id} className="tree-branch">
-          <div className="branch-name"><FaRegFolderOpen className="branch-icon-type" />{dir.name}</div>
+          <div className="branch-name" onClick={() => handleOptions(true, `${dir.dir_id}`)}><FaRegFolderOpen className="branch-icon-type" />{dir.name}</div>
           <div style={{ paddingLeft: '10px' }}>
-            <DirectoryTree dirId={dir.dir_id} handleViewPreview={handleViewPreview} />
+            <DirectoryTree dirId={dir.dir_id} handleViewPreview={handleViewPreview} handleOptions={handleOptions}/>
           </div>
         </div>
       ))}

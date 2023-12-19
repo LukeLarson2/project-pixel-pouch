@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 
 import DirectoryTree from '../../_components/DirectoryTree';
 import AdminFilePreview from "../../_components/AdminFilePreview";
+import AdminDirOptions from "../../_components/AdminDirOptions";
 
 import { FaPlus } from "react-icons/fa";
 
@@ -33,6 +34,7 @@ export default function Clients() {
   const [showPreview, setShowPreview] = useState(false)
   const [filePreviewId, setFilePreviewId] = useState('')
   const [selectedDirId, setSelectedDirId] = useState('')
+  const [showDirOptions, setShowDirOptions] = useState(false)
 
   const supabase = createClientComponentClient();
 
@@ -91,6 +93,11 @@ export default function Clients() {
     }
   };
 
+  const handleOptions = (value:boolean, parent:string) => {
+    setSelectedDirId(parent)
+    setShowDirOptions(value)
+  }
+
   useEffect(() => {
     setSelectedProject(null)
   }, [selectedClient])
@@ -106,6 +113,9 @@ export default function Clients() {
         <div className="loader-container">
           <span className="loader"></span>
         </div>
+      )}
+      {showDirOptions && selectedDirId && (
+        <AdminDirOptions parentDirId={selectedDirId} projectId={`${selectedProject?.project_id}`} handleOptions={handleOptions}/>
       )}
       <div className="admin-client-collection" style={{zIndex: "10"}}>
         <h2>Clients</h2>
@@ -135,7 +145,7 @@ export default function Clients() {
       {selectedProject && (
         <div className={`admin-client-collection-files ${selectedProject ? 'sliding-in' : 'sliding-out'}`} style={{zIndex: "1"}}>
           <h2>Files</h2>
-          <DirectoryTree dirId={selectedProject.root_dir} handleViewPreview={handleViewPreview} />
+          <DirectoryTree dirId={selectedProject.root_dir} handleViewPreview={handleViewPreview} handleOptions={handleOptions}/>
         </div>
       )}
       {showPreview && (
