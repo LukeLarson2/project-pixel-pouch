@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { FaTimes } from "react-icons/fa";
 import '../_stylesheets/addFile.css';
+import { setDefaultAutoSelectFamilyAttemptTimeout } from 'net';
 
 export default function AddFileModal({ handleAddFile, currentDirId }: {
   handleAddFile: (value: boolean) => void;
@@ -72,12 +73,13 @@ export default function AddFileModal({ handleAddFile, currentDirId }: {
         const fileExtension = file.name.split('.').pop()?.toLowerCase();
         const isImage = fileExtension ? imageExtensions.includes(fileExtension) : false;
 
-        const storagePath = isImage ? 'images/' : 'docs/';
-        const uploadPath = `${storagePath}${filePath}`;
+        const storagePath = isImage ? 'images' : 'docs';
+        const uploadPath = `${storagePath}/${file.name}`;
+        setFilePath(uploadPath)
 
         const { error } = await supabase
           .storage
-          .from('client_files')
+          .from(`client_files`)
           .upload(uploadPath, file, {
             cacheControl: '3600',
             upsert: false
@@ -92,10 +94,11 @@ export default function AddFileModal({ handleAddFile, currentDirId }: {
         const supabaseStorageUrl = 'https://jukuwnfgauvcbbkjnhrt.supabase.co/storage/v1/object/public/client_files/';
         const fileUrl = `${supabaseStorageUrl}${uploadPath}`;
 
-        const timestamp = new Date().toISOString();
-        const fileUrlWithTimestamp = `${fileUrl}?t=${encodeURIComponent(timestamp)}`
 
-        setUrl(fileUrlWithTimestamp);
+        // const timestamp = new Date().toISOString();
+        // const fileUrlWithTimestamp = `${fileUrl}?t=${encodeURIComponent(timestamp)}`
+
+        setUrl(fileUrl);
       }
       setIsLoading(false)
     }
@@ -105,8 +108,8 @@ export default function AddFileModal({ handleAddFile, currentDirId }: {
     if (!isLoading && url) {
       setIsLoading(true)
       await supabase.storage
-        .from('client_files')
-        .remove([url])
+        .from(`client_files`)
+        .remove([filePath])
         .then(({ error }) => {
           if (error) {
             console.error(error)
@@ -114,8 +117,9 @@ export default function AddFileModal({ handleAddFile, currentDirId }: {
             return
           }
         })
+        .then(() => handleAddFile(false))
+      }
       handleAddFile(false);
-    }
   }
 
   return (
