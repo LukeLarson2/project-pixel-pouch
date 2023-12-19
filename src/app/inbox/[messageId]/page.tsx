@@ -128,9 +128,9 @@ export default function MessageDetails({
           <button className="message-btn-download" onClick={() => startDownload(message.storage_url, fileType)}>Download File</button>
         )}
         {message.complete ? (
-          <button className='todo-done' onClick={() => handleComplete(false)}><FaCheck /> Compelte</button>
+          <button className='todo-done' onClick={() => handleComplete(false)}><FaCheck /> Complete</button>
         ) : (
-          <button className="todo-not-done" onClick={() => handleComplete(true)}>Mark Compelete</button>
+          <button className="todo-not-done" onClick={() => handleComplete(true)}>Mark Complete</button>
         )}
       </div>
     </div>
