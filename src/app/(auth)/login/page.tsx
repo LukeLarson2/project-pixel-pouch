@@ -109,6 +109,21 @@ export default function Login() {
 
     const response = await supabase.auth.getUser();
     setUser(response.data.user)
+
+    const {data, error} = await supabase
+    .from('users')
+    .select('admin')
+    .eq('email', response.data.user?.email)
+
+    if (error) {
+      setIsLoading(false)
+      return;
+    }
+
+    if (data[0].admin) {
+      router.replace('/admin')
+      return;
+    }
     router.replace('/');
   }
 

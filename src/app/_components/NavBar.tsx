@@ -40,8 +40,7 @@ type ProjectItem = {
 type User = {
   username: string;
   email: string;
-  inbox: MessageItem[];       // Array of Message objects
-  projects: ProjectItem[]; // Array of ProjectItem objects
+  admin: boolean;
 };
 
 export default function NavBar() {
@@ -61,6 +60,11 @@ export default function NavBar() {
   const navLinks = [
     { name: 'My Projects', href: '/' },
     { name: 'Inbox', href: '/inbox' }
+  ]
+
+  const adminLinks = [
+    { name: 'Current Clients', href: '/admin/clients' },
+    { name: 'Add Client', href: '/admin/add-client' }
   ]
 
   const handleViewPreview = () => {
@@ -177,15 +181,33 @@ export default function NavBar() {
         <div className='nav-main'>
           <div className='nav-prof'>
             <div className='nav-links'>
-              {navLinks.map((link) => {
-                const isActive = link.href === '/'
-                  ? pathname === link.href : pathname.startsWith(link.href);
-                return (
-                  <Link href={link.href} onClick={closeModals} key={link.name} className={isActive ? "active-link" : "nav-link"}>
-                    {link.name}
-                  </Link>
-                )
-              })}
+              {userData.admin ? (
+                <>
+                  {adminLinks.map((link) => {
+                    console.log(userData)
+                    const isActive = link.href === '/'
+                      ? pathname === link.href : pathname.startsWith(link.href);
+                    return (
+                      <Link href={link.href} onClick={closeModals} key={link.name} className={isActive ? "active-link" : "nav-link"}>
+                        {link.name}
+                      </Link>
+                    )
+                  })}
+                </>
+              ) : (
+                <>
+                  {navLinks.map((link) => {
+                    console.log(userData)
+                    const isActive = link.href === '/'
+                      ? pathname === link.href : pathname.startsWith(link.href);
+                    return (
+                      <Link href={link.href} onClick={closeModals} key={link.name} className={isActive ? "active-link" : "nav-link"}>
+                        {link.name}
+                      </Link>
+                    )
+                  })}
+                </>
+              )}
             </div>
             <div className="right-nav">
               <div className="nav-profile">Welcome back, {userData?.username}</div>

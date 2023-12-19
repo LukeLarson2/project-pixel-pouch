@@ -32,7 +32,6 @@ type Dir = {
   parent_dir: number;
 }
 
-
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [dirs, setDirs] = useState<Dir[] | []>([]);

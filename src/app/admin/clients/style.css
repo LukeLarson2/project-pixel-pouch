@@ -1,0 +1,129 @@
+.admin-all-clients-main {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30px;
+}
+
+.admin-client-collection {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 200px;
+  width: auto;
+  height: 100%;
+  box-shadow: 1px 1px 2px #00000080;
+  border-radius: 10px;
+  padding: 10px;
+  margin-right: 20px;
+  position: relative;
+  overflow-y: scroll;
+}
+.admin-client-collection::-webkit-scrollbar {
+  display: none;
+}
+.admin-client-collection-files::-webkit-scrollbar {
+  display: none;
+}
+
+.admin-client-collection h2 {
+  color: #666;
+}
+.admin-client-collection-files {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: auto;
+  min-width: 200px;
+  height: 100%;
+  box-shadow: 1px 1px 2px #00000080;
+  border-radius: 10px;
+  padding: 10px;
+  margin-right: 20px;
+  overflow-y: scroll;
+}
+
+
+.admin-single-client {
+  width: 90%;
+  height: auto;
+  box-shadow: 1px 1px 2px #00000080;
+  background-color: #63C6AE;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: scale .2s ease-in-out, background-color .2s ease-in-out;
+}
+
+.admin-client-selected {
+  width: 90%;
+  height: auto;
+  box-shadow: 1px 1px 2px #00000080;
+  background-color: #6C94C7;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: scale .2s ease-in-out, background-color .2s ease-in-out;
+}
+
+.admin-single-client:hover,
+.admin-client-selected:hover {
+  background-color: #6C94C7;
+  scale: .97;
+}
+
+.tree-branch {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  height: auto;
+}
+
+.branch-name {
+  font-size: 13px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  box-shadow: 1px 1px 2px #00000080;
+  width: 200px;
+  height: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #63C6AE;
+  color: #fff;
+  align-items: center;
+  display: flex;
+  transition: scale .2s ease-in-out, opacity .2s ease-in-out;
+}
+.branch-name-file {
+  font-size: 13px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  box-shadow: 1px 1px 2px #00000080;
+  width: 200px;
+  height: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color:#6C94C7;
+  color: #fff;
+  align-items: center;
+  display: flex;
+  transition: scale .2s ease-in-out, opacity .2s ease-in-out;
+}
+
+.branch-name:hover,
+.branch-name-file:hover {
+  opacity: 50%;
+  scale: .97;
+}
+
+.branch-icon-type {
+  margin-right: 5px;
+}

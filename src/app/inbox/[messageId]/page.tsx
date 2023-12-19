@@ -122,7 +122,7 @@ export default function MessageDetails({
       <p className="message-message">{message.message}</p>
       <div className="btn-placement-message">
         {message.upload && (
-          <button className="message-btn-upload" onClick={() => handleAddFile(true)}>Uplaod File</button>
+          <button className="message-btn-upload" onClick={() => handleAddFile(true)}>Upload File</button>
         )}
         {message.download && (
           <button className="message-btn-download" onClick={() => startDownload(message.storage_url, fileType)}>Download File</button>
