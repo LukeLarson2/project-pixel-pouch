@@ -1,7 +1,7 @@
-.file-details-main{
+.admin-file-details-main{
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 40%;
   height: 80%;
   justify-content: flex-start;
   align-items: flex-start;
@@ -9,11 +9,11 @@
   cursor: default;
 }
 
-.file-info{
+.admin-file-info{
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 40%;
+  width: 90%;
   height: auto;
   box-shadow: inset 1px 1px 2px #00000080;
   padding: 20px;
@@ -22,7 +22,7 @@
   position: relative;
 }
 
-.file-thumbnail {
+.admin-file-thumbnail {
   background-position:top;
   background-repeat: no-repeat;
   background-size: cover;
@@ -36,11 +36,11 @@
 
 }
 
-.back-to-files {
+.admin-back-to-files {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 110px;
+  width: 130px;
   box-shadow: 1px 1px 2px #00000080;
   padding: 10px;
   border-radius: 10px;
@@ -49,32 +49,32 @@
   transition: scale .3s ease-in-out;
 }
 
-.back-to-files:hover {
+.admin-back-to-files:hover {
   scale: .97;
 }
 
-.file-thumbnail:hover {
+.admin-file-thumbnail:hover {
   scale: .97;
   opacity: 70%;
 }
 
-.details-block{
+.admin-details-block{
   display: flex;
   flex-direction: column;
   width: 65%;
 }
 
-.details-block p {
+.admin-details-block p {
   width: 100%;
   margin: 0px;
 }
-.details-block h3 {
+.admin-details-block h3 {
   margin: 0px;
   margin-top: 10px;
   margin-bottom: 5px;
 }
 
-.download-file {
+.admin-download-file {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,7 +92,7 @@
   font-size: 17px;
 }
 
-.download-file:hover {
+.admin-download-file:hover {
   background-color: #6c93c755;
   scale: .96;
   color: #666;
@@ -118,7 +118,7 @@
   height: 80%;
   position: relative;
   background-color: #2c2c2c;
-  box-shadow: 4px 4px 7px #00000080;
+  box-shadow: 4px 4px 5px #00000080;
 }
 .large-image{
   width: 100%;

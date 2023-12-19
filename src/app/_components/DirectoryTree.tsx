@@ -12,6 +12,7 @@ import '../admin/clients/style.css'
 
 type DirectoryTreeProps = {
   dirId: number;
+  handleViewPreview: (value: boolean, id: string) => void;
 };
 
 type File = {
@@ -33,7 +34,7 @@ type Dir = {
   parent_dir: number;
 }
 
-const DirectoryTree: React.FC<DirectoryTreeProps> = ({ dirId }) => {
+const DirectoryTree: React.FC<DirectoryTreeProps> = ({ dirId, handleViewPreview }) => {
   const [subDirectories, setSubDirectories] = useState<Dir[] | null>(null);
   const [files, setFiles] = useState<File[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -90,7 +91,7 @@ const DirectoryTree: React.FC<DirectoryTreeProps> = ({ dirId }) => {
         <div key={dir.dir_id} className="tree-branch">
           <div className="branch-name"><FaRegFolderOpen className="branch-icon-type" />{dir.name}</div>
           <div style={{ paddingLeft: '10px' }}>
-            <DirectoryTree dirId={dir.dir_id} />
+            <DirectoryTree dirId={dir.dir_id} handleViewPreview={handleViewPreview} />
           </div>
         </div>
       ))}
@@ -108,8 +109,8 @@ const DirectoryTree: React.FC<DirectoryTreeProps> = ({ dirId }) => {
         }
         return (
           <div key={file.file_id} className="tree-branch">
-            <div className="branch-name-file">
-              <FileIconComponent className="branch-icon-type"/>{file.name}
+            <div className="branch-name-file" onClick={() => handleViewPreview(true, `${file.file_id}`)}>
+              <FileIconComponent className="branch-icon-type" />{file.name}
             </div>
           </div>
         )

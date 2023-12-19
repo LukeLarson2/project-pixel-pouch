@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
 import DirectoryTree from '../../_components/DirectoryTree';
+import AdminFilePreview from "../../_components/AdminFilePreview";
 
 import './style.css'
 
@@ -27,6 +28,8 @@ export default function Clients() {
   const [isLoading, setIsLoading] = useState(true)
   const [selectedClient, setSelectedClient] = useState('')
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null)
+  const [showPreview, setShowPreview] = useState(false)
+  const [filePreviewId, setFilePreviewId] = useState('')
 
   const supabase = createClientComponentClient();
 
@@ -62,9 +65,18 @@ export default function Clients() {
     setIsLoading(false)
   }
 
+  const handleViewPreview = (value:boolean, id:string) => {
+    setFilePreviewId(id);
+    setShowPreview(value);
+  }
+
   const getDirFiles = (project: ProjectItem) => {
     setSelectedProject(project)
   }
+
+  const clearPreview = (value:boolean) => [
+    setShowPreview(value)
+  ]
 
   useEffect(() => {
     getClients()
@@ -104,8 +116,11 @@ export default function Clients() {
       {selectedProject && (
         <div className="admin-client-collection-files">
           <h2>Files</h2>
-          <DirectoryTree dirId={selectedProject.root_dir} />
+          <DirectoryTree dirId={selectedProject.root_dir} handleViewPreview={handleViewPreview} />
         </div>
+      )}
+      {showPreview && (
+        <AdminFilePreview fileId={filePreviewId} clearPreview={clearPreview}/>
       )}
     </div>
   )

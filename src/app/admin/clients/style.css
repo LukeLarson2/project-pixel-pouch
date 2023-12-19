@@ -21,6 +21,8 @@
   margin-right: 20px;
   position: relative;
   overflow-y: scroll;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .admin-client-collection::-webkit-scrollbar {
   display: none;
@@ -43,6 +45,8 @@
   box-shadow: 1px 1px 2px #00000080;
   border-radius: 10px;
   padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   margin-right: 20px;
   overflow-y: scroll;
 }
@@ -57,7 +61,7 @@
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
-  transition: scale .2s ease-in-out, background-color .2s ease-in-out;
+  transition: scale .2s ease-in-out, opacity .2s ease-in-out;
 }
 
 .admin-client-selected {
@@ -69,12 +73,12 @@
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
-  transition: scale .2s ease-in-out, background-color .2s ease-in-out;
+  transition: scale .2s ease-in-out, opacity .2s ease-in-out;
 }
 
 .admin-single-client:hover,
 .admin-client-selected:hover {
-  background-color: #6C94C7;
+  opacity: 50%;
   scale: .97;
 }
 
