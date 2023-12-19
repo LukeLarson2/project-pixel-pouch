@@ -163,7 +163,7 @@ export default function Home() {
   }
 
   const handleAddFile = (value: boolean) => {
-    setShowModal(true)
+    setShowModal(value)
   }
 
   useEffect(() => {
@@ -172,11 +172,14 @@ export default function Home() {
   }, [supabase]);
 
   useEffect(() => {
-    if (!showModal && currentDirId !== '') {
-      getDirectoryDetails(currentDirId)
+    const refresh = async () => {
+      if (!showModal && currentDirId !== '') {
+        getDirectoryDetails(currentDirId)
+      }
     }
+    refresh()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [supabase])
+  }, [supabase, showModal])
 
   return (
     <div className="main-folders-container">

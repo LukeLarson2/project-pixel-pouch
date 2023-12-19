@@ -1,0 +1,147 @@
+.file-details-main{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 80%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 50px;
+  cursor: default;
+}
+
+.file-info{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 40%;
+  height: auto;
+  box-shadow: inset 1px 1px 2px #00000080;
+  padding: 20px;
+  background-color: #dbdbdb41;
+  border-radius: 10px;
+  position: relative;
+}
+
+.file-thumbnail {
+  background-position:top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 200px;
+  height: 150px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 2px #00000080;
+  cursor: pointer;
+  transition: scale .3s ease-in-out, opacity .3s ease-in-out;
+  margin-right: 30px;
+
+}
+
+.back-to-files {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 110px;
+  box-shadow: 1px 1px 2px #00000080;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #666;
+  transition: scale .3s ease-in-out;
+}
+
+.back-to-files:hover {
+  scale: .97;
+}
+
+.file-thumbnail:hover {
+  scale: .97;
+  opacity: 70%;
+}
+
+.details-block{
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+}
+
+.details-block p {
+  width: 100%;
+  margin: 0px;
+}
+.details-block h3 {
+  margin: 0px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.download-file {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 40px;
+  border-radius: 10px;
+  outline: hidden;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+  color: #fff;
+  transition: background-color .3s ease-in-out, scale .3s ease-in-out;
+  background-color:#6C94C7;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.download-file:hover {
+  background-color: #6c93c755;
+  scale: .96;
+  color: #666;
+}
+
+.large-image-overlay{
+  display: flex;
+  position: fixed;
+  width: 100dvw;
+  height: 100dvh;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  background-color: #00000080;
+  z-index: 20;
+}
+.large-image-modal{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  height: 80%;
+  position: relative;
+  background-color: #2c2c2c;
+  box-shadow: 2px 2px 3px #00000080;
+  padding: 50px;
+  border-radius: 10px;
+}
+.large-image{
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.large-modal-close {
+  color: #fff;
+  width: 34px;
+  height: 34px;
+  position: absolute;
+  z-index: 22;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  transition: scale .3s ease-in-out;
+}
+
+.large-modal-close:hover {
+  scale: .95
+}

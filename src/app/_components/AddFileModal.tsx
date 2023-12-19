@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { FaTimes } from "react-icons/fa";
 import '../_stylesheets/addFile.css';
-import { setDefaultAutoSelectFamilyAttemptTimeout } from 'net';
 
 export default function AddFileModal({ handleAddFile, currentDirId }: {
   handleAddFile: (value: boolean) => void;
@@ -35,6 +34,16 @@ export default function AddFileModal({ handleAddFile, currentDirId }: {
     }
 
     const newFileId = maxFileIdData.length > 0 ? maxFileIdData[0].file_id + 1 : 1;
+
+    let fileUrlPath = '';
+    if (url === '') {
+      const { data } = supabase
+        .storage
+        .from('client_files')
+        .getPublicUrl(filePath)
+
+        console.log(data)
+    }
 
     const fileData = {
       directory: currentDirId,
@@ -86,18 +95,19 @@ export default function AddFileModal({ handleAddFile, currentDirId }: {
           })
 
         if (error) {
-          console.error(error)
+          alert(`An error occured: ${error.message}`)
+          event.target.value = '';
+          setIsLoading(false)
+          return;
+        }
+
+        if (error) {
           setIsLoading(false)
           return;
         }
 
         const supabaseStorageUrl = 'https://jukuwnfgauvcbbkjnhrt.supabase.co/storage/v1/object/public/client_files/';
         const fileUrl = `${supabaseStorageUrl}${uploadPath}`;
-
-
-        // const timestamp = new Date().toISOString();
-        // const fileUrlWithTimestamp = `${fileUrl}?t=${encodeURIComponent(timestamp)}`
-
         setUrl(fileUrl);
       }
       setIsLoading(false)
@@ -118,8 +128,8 @@ export default function AddFileModal({ handleAddFile, currentDirId }: {
           }
         })
         .then(() => handleAddFile(false))
-      }
-      handleAddFile(false);
+    }
+    handleAddFile(false);
   }
 
   return (

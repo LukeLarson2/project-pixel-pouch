@@ -1,0 +1,80 @@
+.sign-out-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 40px;
+  background-color: #c66363;
+  border-radius: 5px;
+  outline: hidden;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  transition: background-color .3s ease-in-out, scale .3s ease-in-out;
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-size: 16px;
+  margin-right: 30px;
+}
+
+.sign-out-btn:hover {
+  background-color: #c6636355;
+  scale: .96;
+  color: #666;
+}
+
+.settings-main{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 90%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 50px;
+  cursor: default;
+}
+.client-details{
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+  width: 500px;
+  justify-content: space-evenly;
+  box-shadow: 1px 1px 2px #00000080;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+}
+.client-info-line{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 30px;
+  font-weight: bold;
+}
+.client-info-line span{
+  color: #666;
+  font-weight: 100;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.client-edit-btn {
+  color: #63C6AE;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: color .3s ease-in-out;
+  position: absolute;
+  top: 25px;
+  left: 90%;
+}
+.client-edit-btn:hover {
+  color: #6C94C7
+}
+
+.settings-btn-pos {
+  display: flex;
+  justify-content: flex-start;
+  width: 500px;
+}
