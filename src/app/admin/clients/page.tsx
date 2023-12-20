@@ -64,7 +64,8 @@ export default function Clients() {
       const { data, error } = await supabase
         .from("users")
         .select("client_id, username")
-        .neq("client_id", userId[0].client_id);
+        .neq("client_id", userId[0].client_id)
+        .not("admin", "eq", true);
 
       if (error) {
         console.error(error);
