@@ -28,7 +28,7 @@ export default function Admin() {
 
       if (error || !user || !user.admin) {
         // If there's an error, or user is not admin, redirect to not allowed page
-        router.replace("/not-allowed");
+        router.replace("/");
       }
       setIsLoading(false);
       setIsAdmin(true);

@@ -8,6 +8,7 @@ import { FaEdit } from "react-icons/fa";
 
 import getUser from "../_utils/getUser";
 import "./style.css";
+import ChangeSubscription from "../_components/ChangeSubscription";
 
 type User = {
   client_id: string;
@@ -27,6 +28,7 @@ export default function Settings() {
   const [userInfo, setUserInfo] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [logingOut, setLoginOut] = useState(false);
+  const [showChangeSub, setShowChangeSub] = useState(false);
 
   const supabase = createClientComponentClient();
   const router = useRouter();
@@ -39,6 +41,10 @@ export default function Settings() {
 
   const handleReset = () => {
     router.push("/account-settings/password-reset");
+  };
+
+  const handleShowModal = (value: boolean) => {
+    setShowChangeSub(value);
   };
 
   useEffect(() => {
@@ -70,9 +76,15 @@ export default function Settings() {
         </div>
       ) : (
         <>
+          {showChangeSub && (
+            <ChangeSubscription handleShowModal={handleShowModal} />
+          )}
           <h2>Account Settings</h2>
           <div className="client-details">
-            <FaEdit className="client-edit-btn" />
+            <FaEdit
+              className="client-edit-btn"
+              onClick={() => handleShowModal(true)}
+            />
             <div className="client-info-line">
               Name <span>{userInfo?.name}</span>
             </div>

@@ -269,6 +269,31 @@ export default function AddClient() {
     }
   }
 
+  useEffect(() => {
+    const checkUser = async () => {
+      const session = await supabase.auth.getSession();
+
+      if (!session.data.session) {
+        // If there's no session, redirect to login or home page
+        router.replace("/login");
+        return;
+      }
+
+      const { data: user, error } = await supabase
+        .from("users")
+        .select("admin")
+        .eq("email", session.data.session.user.email)
+        .single();
+
+      if (error || !user || !user.admin) {
+        // If there's an error, or user is not admin, redirect to not allowed page
+        router.replace("/");
+      }
+    };
+    checkUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [supabase]);
+
   return (
     <div className="add-client-main">
       <h2>Add New Client</h2>

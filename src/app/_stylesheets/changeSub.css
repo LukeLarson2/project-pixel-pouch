@@ -1,0 +1,24 @@
+.change-sub-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #00000080;
+  width: 100dvw;
+  height: 100dvh;
+  z-index: 200;
+}
+
+.change-sub-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 1px 1px 2px #00000080;
+  padding: 30px;
+}
