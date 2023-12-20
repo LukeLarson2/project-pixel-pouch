@@ -45,6 +45,7 @@ export default function Home() {
   const [historyStack, setHistoryStack] = useState<string[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [currentDirId, setCurrentDirId] = useState("");
+  const [userAdmin, setUserAdmin] = useState(false);
 
   const router = useRouter();
 
@@ -66,13 +67,17 @@ export default function Home() {
     if (user) {
       const { data: userId, error: userIdError } = await supabase
         .from("users")
-        .select("client_id")
+        .select("client_id, admin")
         .eq("email", user[0].email);
 
       if (userIdError) {
         console.error(userIdError);
         setIsLoading(false);
         return;
+      }
+
+      if (userId[0].admin) {
+        router.replace("/admin/clients");
       }
 
       if (userId[0]) {

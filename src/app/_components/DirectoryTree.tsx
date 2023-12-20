@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
 import { FaRegFolderOpen } from "react-icons/fa6";
+import { FaExclamation } from "react-icons/fa";
 
 import {
   FaFileAlt,
@@ -155,6 +156,7 @@ const DirectoryTree: React.FC<DirectoryTreeProps> = ({
             >
               <FileIconComponent className="branch-icon-type" />
               {file.name}
+              {file.new && <FaExclamation className="new-file" />}
             </div>
           </div>
         );

@@ -8,6 +8,7 @@ import DirectoryTree from "../../_components/DirectoryTree";
 import AdminFilePreview from "../../_components/AdminFilePreview";
 import AdminDirOptions from "../../_components/AdminDirOptions";
 import RequestFile from "../../_components/RequestFile";
+import getUser from "../../_utils/getUser";
 
 import { FaPlus } from "react-icons/fa";
 
@@ -44,17 +45,35 @@ export default function Clients() {
   const router = useRouter();
 
   const getClients = async () => {
-    const { data, error } = await supabase
-      .from("users")
-      .select("client_id, username");
+    const user = await getUser();
+    if (user) {
+      const { data: userId, error: userIdError } = await supabase
+        .from("users")
+        .select("admin, client_id")
+        .eq("email", user[0].email);
 
-    if (error) {
-      console.error(error);
-      setIsLoading(false);
-      return;
+      if (userIdError) {
+        console.error(userIdError);
+        setIsLoading(false);
+        return;
+      }
+
+      if (!userId[0].admin) {
+        router.replace("/");
+      }
+      const { data, error } = await supabase
+        .from("users")
+        .select("client_id, username")
+        .neq("client_id", userId[0].client_id);
+
+      if (error) {
+        console.error(error);
+        setIsLoading(false);
+        return;
+      }
+
+      setClients(data);
     }
-
-    setClients(data);
     setIsLoading(false);
   };
 
@@ -84,13 +103,24 @@ export default function Clients() {
     setSelectedProject(project);
   };
 
-  const clearPreview = (value: boolean) => [setShowPreview(value)];
+  const clearPreview = (value: boolean) => {
+    if (!value) {
+      setRefreshTree((prev) => !prev); // Toggle state to trigger refresh
+    }
+    setShowPreview(value);
+  };
 
   const handleOptions = (value: boolean, parent: string) => {
     setSelectedDirId(parent);
     setShowDirOptions(value);
     if (!value) {
       setRefreshTree((prev) => !prev); // Toggle state to trigger refresh
+    }
+  };
+
+  const updateTree = (value: boolean) => {
+    if (!value) {
+      setRefreshTree((prev) => !prev);
     }
   };
 
@@ -199,6 +229,8 @@ export default function Clients() {
           <AdminFilePreview
             fileId={filePreviewId}
             clearPreview={clearPreview}
+            refreshTree={refreshTree}
+            updateTree={updateTree}
           />
         )}
       </div>

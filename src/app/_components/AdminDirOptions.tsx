@@ -7,6 +7,7 @@ import "../_stylesheets/adminDirOptions.css";
 import { FaTimes } from "react-icons/fa";
 
 import RequestFile from "./RequestFile";
+import AddFileModal from "./AddFileModal";
 
 export default function AdminDirOptions({
   parentDirId,
@@ -24,6 +25,7 @@ export default function AdminDirOptions({
   const [dirName, setDirName] = useState(false);
   const [editDirName, setEditDirName] = useState(false);
   const [showRequest, setShowRequest] = useState(false);
+  const [showAddFile, setShowAddFile] = useState(false);
   const supabase = createClientComponentClient();
 
   const addFolder = async () => {
@@ -82,6 +84,10 @@ export default function AdminDirOptions({
     setShowRequest(value);
   };
 
+  const handleAddFile = (value: boolean) => {
+    setShowAddFile(value);
+  };
+
   return (
     <div className="admin-dir-options-overlay">
       {isLoading && (
@@ -137,6 +143,12 @@ export default function AdminDirOptions({
           handleRequestModal={handleRequestModal}
         />
       )}
+      {showAddFile && parentDirId && (
+        <AddFileModal
+          handleAddFile={handleAddFile}
+          currentDirId={parentDirId}
+        />
+      )}
       <div className="admin-dir-options-modal">
         <h2>Folder Options</h2>
         <button type="button" onClick={addName}>
@@ -147,6 +159,9 @@ export default function AdminDirOptions({
         </button>
         <button id="request" type="button" onClick={() => setShowRequest(true)}>
           Request files
+        </button>
+        <button id="request" type="button" onClick={() => handleAddFile(true)}>
+          Add file
         </button>
         <FaTimes
           className="close-options"

@@ -4,6 +4,10 @@
   height: 90%;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+.add-client-main h2 {
+  color: #666;
 }
 .add-client-modal {
   display: flex;

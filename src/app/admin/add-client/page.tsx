@@ -271,6 +271,7 @@ export default function AddClient() {
 
   return (
     <div className="add-client-main">
+      <h2>Add New Client</h2>
       <div className="add-client-modal">
         {isLoading && (
           <div className="loader-container">

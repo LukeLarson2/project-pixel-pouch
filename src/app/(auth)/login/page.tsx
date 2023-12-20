@@ -176,8 +176,8 @@ export default function Login() {
         style={{
           height:
             emailError || passwordError || signInError || signUpError
-              ? "400px"
-              : "350px",
+              ? "350px"
+              : "300px",
         }}
       >
         <h2>Login</h2>
@@ -209,15 +209,6 @@ export default function Login() {
           onClick={() => handleSignIn()}
         >
           Sign In
-        </button>
-        <div className="divide" />
-        <button
-          className="login-sign-out-btn"
-          type="button"
-          disabled={!!(emailError || passwordError)}
-          onClick={() => handleSignUp()}
-        >
-          Sign Up
         </button>
         <p className="forgot-password" onClick={() => handleToForget()}>
           Forgot Password

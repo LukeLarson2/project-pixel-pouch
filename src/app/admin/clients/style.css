@@ -31,6 +31,10 @@
   height: 100%;
   width: fit-content;
 }
+
+.admin-section h2 {
+  color: #666;
+}
 .admin-client-collection::-webkit-scrollbar {
   display: none;
 }
@@ -97,6 +101,8 @@
   align-items: flex-start;
   width: 100%;
   height: auto;
+  border-left: 1px solid #8888885c;
+  border-radius: 10px 0px 0px 0px;
 }
 
 .branch-name {
@@ -128,6 +134,7 @@
   padding-left: 10px;
   border-radius: 10px;
   background-color: #666;
+  position: relative;
   color: #fff;
   align-items: center;
   display: flex;
