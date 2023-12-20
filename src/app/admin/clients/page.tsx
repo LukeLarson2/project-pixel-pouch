@@ -41,6 +41,7 @@ export default function Clients() {
   const [refreshTree, setRefreshTree] = useState(false);
 
   const supabase = createClientComponentClient();
+  const router = useRouter();
 
   const getClients = async () => {
     const { data, error } = await supabase
@@ -93,6 +94,10 @@ export default function Clients() {
     }
   };
 
+  const handleAddClient = () => {
+    router.push("/admin/add-client");
+  };
+
   useEffect(() => {
     setSelectedProject(null);
   }, [selectedClient]);
@@ -137,7 +142,11 @@ export default function Clients() {
                 </div>
               );
             })}
-            <button type="button" className="admin-add-to-collection">
+            <button
+              type="button"
+              className="admin-add-to-collection"
+              onClick={handleAddClient}
+            >
               <FaPlus />
             </button>
           </div>
