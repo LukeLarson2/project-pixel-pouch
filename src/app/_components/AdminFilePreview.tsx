@@ -102,6 +102,8 @@ export default function AdminFilePreview({
     }
   };
 
+  const imageExtensions = ["png", "jpg", "jpeg", "gif", "bmp", "tiff", "webp"];
+
   useEffect(() => {
     const getFile = async () => {
       setIsLoading(true);
@@ -142,11 +144,11 @@ export default function AdminFilePreview({
           <FaTimes /> Close Preview
         </div>
         <div className="admin-file-title" key={file.file_id}>
-          <h1>File Name - {file.name}</h1>
-          <p>Last modified {timeAgo}</p>
+          <h2>File Name - {file.name}</h2>
+          <p>{timeAgo}</p>
         </div>
         <div className="admin-file-info">
-          {file.storage_url && (
+          {file.storage_url && imageExtensions.includes(file.type_icon) && (
             <>
               <div
                 className="admin-file-thumbnail"
@@ -157,7 +159,9 @@ export default function AdminFilePreview({
           )}
           <div
             className="admin-details-block"
-            style={{ width: file.storage_url ? "65%" : "100%" }}
+            style={{
+              width: imageExtensions.includes(file.type_icon) ? "65%" : "100%",
+            }}
           >
             <h3>File Details</h3>
             <p>{file.details}</p>

@@ -51,8 +51,13 @@
 .admin-file-title {
   display: flex;
   height: fit-content;
-  align-items: baseline;
+  flex-direction: column;
   color: #666;
+}
+
+.admin-file-title h2 {
+  margin: 0px;
+  margin-top: 10px;
 }
 
 .admin-file-title p {

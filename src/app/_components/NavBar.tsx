@@ -243,10 +243,12 @@ export default function NavBar() {
                   {newMessages.length > 0 && (
                     <FaExclamationCircle className="notification" />
                   )}
-                  <FaInbox
-                    className="icon"
-                    onClick={() => handleViewPreview()}
-                  />
+                  {!userData.admin && (
+                    <FaInbox
+                      className="icon"
+                      onClick={() => handleViewPreview()}
+                    />
+                  )}
                 </div>
                 <IoSettingsSharp className="icon" onClick={goToSettings} />
               </div>

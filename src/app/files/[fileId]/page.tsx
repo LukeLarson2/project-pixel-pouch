@@ -48,6 +48,8 @@ export default function File({
     router.replace("/");
   };
 
+  const imageExtensions = ["png", "jpg", "jpeg", "gif", "bmp", "tiff", "webp"];
+
   useEffect(() => {
     const getFile = async () => {
       const { data, error } = await supabase
@@ -76,7 +78,7 @@ export default function File({
           File Name - {file.name}
         </h1>
         <div className="file-info">
-          {file.storage_url && (
+          {file.storage_url && imageExtensions.includes(file.type_icon) && (
             <>
               <div
                 className="file-thumbnail"
@@ -87,7 +89,9 @@ export default function File({
           )}
           <div
             className="details-block"
-            style={{ width: file.storage_url ? "65%" : "100%" }}
+            style={{
+              width: imageExtensions.includes(file.type_icon) ? "65%" : "100%",
+            }}
           >
             <h3>File Details</h3>
             <p>{file.details}</p>

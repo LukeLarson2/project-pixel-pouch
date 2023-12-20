@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 import DirectoryTree from "../../_components/DirectoryTree";
 import AdminFilePreview from "../../_components/AdminFilePreview";
 import AdminDirOptions from "../../_components/AdminDirOptions";
-import RequestFile from "../../_components/RequestFile";
 import getUser from "../../_utils/getUser";
 
 import { FaPlus } from "react-icons/fa";
