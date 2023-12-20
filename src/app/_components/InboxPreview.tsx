@@ -1,12 +1,11 @@
-'use client'
-import React, { useEffect, useState, forwardRef } from 'react';
-import { useRouter } from 'next/navigation';
+"use client";
+import React, { useEffect, useState, forwardRef } from "react";
+import { useRouter } from "next/navigation";
 import formatTimeAgo from "../_utils/formatTimeAgo";
 import truncateString from "../_utils/truncateString";
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
-import '../inbox/style.css';
-
+import "../inbox/style.css";
 
 type MessageItem = {
   todo_id: number;
@@ -26,50 +25,55 @@ type MessageItem = {
 type InboxPreviewProps = {
   newMessages: MessageItem[];
   closePreview: () => void;
-  onViewMessage: (id:string) => Promise<void>;
-}
+  onViewMessage: (id: string) => Promise<void>;
+};
 
 const InboxPreview = forwardRef<HTMLDivElement, InboxPreviewProps>(
-({newMessages, closePreview, onViewMessage}, ref) => {
-  // const [messages, setMessages] = useState<MessageItem[]>([]);
-  const router = useRouter();
-  const supabase = createClientComponentClient();
+  ({ newMessages, closePreview, onViewMessage }, ref) => {
+    // const [messages, setMessages] = useState<MessageItem[]>([]);
+    const router = useRouter();
+    const supabase = createClientComponentClient();
 
-  const navToInbox = () => {
-    router.replace('/inbox')
-  }
+    const navToInbox = () => {
+      router.replace("/inbox");
+    };
 
-  return (
-    <div className="inbox-preview" ref={ref}>
-      <div className="prev-header">New Messages</div>
-      {newMessages.length < 1 ? (
-        <div className="prev-no-messages">No New Messages</div>
-      ) : (
-        <>
-        {newMessages.map((todo) => {
-          if (todo.viewed === false) {
-            const {todo_id, title, message, date_added} = todo;
-            const formTitle = truncateString(title, 35)
-            const formMessage = truncateString(message, 100);
-            const timeAgo = formatTimeAgo(date_added);
-            return (
-              <div key={todo_id} className="message" onClick={() => onViewMessage(`${todo_id}`)}>
-                <p className="sate-style">{timeAgo}</p>
-                <h4>{formTitle}</h4>
-                <p className="summary">{formMessage}</p>
-              </div>
-            )
-          }
-        })}
-        </>
-      )}
-      <div className="prev-footer" onClick={navToInbox}>
-        <p>See All Messages</p>
+    return (
+      <div className="inbox-preview" ref={ref}>
+        <div className="prev-header">New Messages</div>
+        {newMessages.length < 1 ? (
+          <div className="prev-no-messages">No New Messages</div>
+        ) : (
+          <>
+            {newMessages.map((todo) => {
+              if (todo.viewed === false) {
+                const { todo_id, title, message, date_added } = todo;
+                const formTitle = truncateString(title, 35);
+                const formMessage = truncateString(message, 100);
+                const timeAgo = formatTimeAgo(date_added);
+                return (
+                  <div
+                    key={todo_id}
+                    className="message"
+                    onClick={() => onViewMessage(`${todo_id}`)}
+                  >
+                    <p className="sate-style">{timeAgo}</p>
+                    <h4>{formTitle}</h4>
+                    <p className="summary">{formMessage}</p>
+                  </div>
+                );
+              }
+            })}
+          </>
+        )}
+        <div className="prev-footer" onClick={navToInbox}>
+          <p>See All Messages</p>
+        </div>
       </div>
-    </div>
-  )
-})
+    );
+  }
+);
 
-InboxPreview.displayName = 'InboxPreview';
+InboxPreview.displayName = "InboxPreview";
 
 export default InboxPreview;

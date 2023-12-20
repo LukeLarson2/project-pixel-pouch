@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import React, { useEffect, useState, useRef } from 'react';
-import Link from 'next/link';
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import React, { useEffect, useState, useRef } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { FaInbox } from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
 import { FaExclamationCircle } from "react-icons/fa";
 
-import InboxPreview from './InboxPreview';
-import { useRouter } from 'next/navigation';
+import InboxPreview from "./InboxPreview";
+import { useRouter } from "next/navigation";
 
-import '../_stylesheets/navbar.css'
+import "../_stylesheets/navbar.css";
 
 type MessageItem = {
   todo_id: number;
@@ -55,84 +55,86 @@ export default function NavBar() {
   const inboxPreviewRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
-  const companyImage = '/assets/images/pixel-sky-design-logo-small.png';
+  const companyImage = "/assets/images/pixel-sky-design-logo-small.png";
 
   const navLinks = [
-    { name: 'My Projects', href: '/' },
-    { name: 'Inbox', href: '/inbox' }
-  ]
+    { name: "My Projects", href: "/" },
+    { name: "Inbox", href: "/inbox" },
+  ];
 
   const adminLinks = [
-    { name: 'Clients Dashboard', href: '/admin/clients' },
-    { name: 'Add Client', href: '/admin/add-client' }
-  ]
+    { name: "Clients Dashboard", href: "/admin/clients" },
+    { name: "Add Client", href: "/admin/add-client" },
+  ];
 
   const handleViewPreview = () => {
     if (showPreview) {
       return;
     }
-    setShowPreview(true)
-  }
+    setShowPreview(true);
+  };
 
   const closeModals = () => {
-    setShowPreview(false)
-  }
+    setShowPreview(false);
+  };
 
   const goToProjects = () => {
-    router.replace('/')
-  }
+    router.replace("/");
+  };
 
   const goToSettings = () => {
-    router.replace('/account-settings')
+    router.replace("/account-settings");
   };
 
   const checkUser = async () => {
-    setIsLoading(true)
-    const session = await supabase.auth.getSession()
+    setIsLoading(true);
+    const session = await supabase.auth.getSession();
     if (!session.data.session) {
       setIsLoading(false);
       return;
     }
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
     if (!user) {
-      setIsLoading(false)
+      setIsLoading(false);
       return;
     }
     const { data, error } = await supabase
-      .from('users')
+      .from("users")
       .select()
-      .eq('email', user?.email)
-      .single()
+      .eq("email", user?.email)
+      .single();
 
     if (error) {
-      console.error(error)
-      setIsLoading(false)
+      console.error(error);
+      setIsLoading(false);
       return;
     }
 
     const { data: newMessages, error: messagesError } = await supabase
-      .from('messages')
+      .from("messages")
       .select()
-      .filter('viewed', 'eq', false)
-      .filter('user_id', 'eq', data.client_id);
+      .filter("viewed", "eq", false)
+      .filter("user_id", "eq", data.client_id);
 
     if (messagesError) {
-      console.error(messagesError)
-      setIsLoading(false)
+      console.error(messagesError);
+      setIsLoading(false);
       return;
     }
 
-    setUserData(data)
+    setUserData(data);
     // const notViewed = newMessages.filter((item) => item.viewed === false);
     // const todoIds = notViewed.map((item) => item.todo_id);
 
     if (newMessages) {
-      setNewMessages(newMessages)
+      setNewMessages(newMessages);
     }
 
     // setInbox(newMessages as MessageItem[])
-    setIsLoading(false)
-  }
+    setIsLoading(false);
+  };
 
   const handleViewMessage = async (id: string) => {
     if (!id) {
@@ -141,89 +143,125 @@ export default function NavBar() {
     }
 
     const { error } = await supabase
-      .from('messages')
+      .from("messages")
       .update({ viewed: true })
-      .eq('todo_id', id)
+      .eq("todo_id", id);
 
     if (error) {
-      console.error(error)
+      console.error(error);
       return;
     }
 
     await checkUser();
-    router.replace(`/inbox/${id}`)
-  }
+    router.replace(`/inbox/${id}`);
+  };
 
   useEffect(() => {
-    checkUser()
+    checkUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [supabase])
+  }, [supabase]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (inboxPreviewRef.current && !inboxPreviewRef.current.contains(event.target as Node)) {
+      if (
+        inboxPreviewRef.current &&
+        !inboxPreviewRef.current.contains(event.target as Node)
+      ) {
         setShowPreview(false);
       }
-    }
+    };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [])
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const pathname = usePathname();
 
-  return userData && (
-    <div className="nav-bar">
-      <div className="nav-container">
-        <div className='nav-main'>
-          <div className='nav-prof'>
-            <div className='nav-links'>
-              {userData.admin ? (
-                <>
-                  {adminLinks.map((link) => {
-                    console.log(userData)
-                    const isActive = link.href === '/'
-                      ? pathname === link.href : pathname.startsWith(link.href);
-                    return (
-                      <Link href={link.href} onClick={closeModals} key={link.name} className={isActive ? "active-link" : "nav-link"}>
-                        {link.name}
-                      </Link>
-                    )
-                  })}
-                </>
-              ) : (
-                <>
-                  {navLinks.map((link) => {
-                    console.log(userData)
-                    const isActive = link.href === '/'
-                      ? pathname === link.href : pathname.startsWith(link.href);
-                    return (
-                      <Link href={link.href} onClick={closeModals} key={link.name} className={isActive ? "active-link" : "nav-link"}>
-                        {link.name}
-                      </Link>
-                    )
-                  })}
-                </>
-              )}
-            </div>
-            <div className="right-nav">
-              <div className="nav-profile">Welcome back, {userData?.username}</div>
-              <div className="inbox">
-                {showPreview && <InboxPreview newMessages={newMessages} closePreview={() => setShowPreview(false)} onViewMessage={handleViewMessage} ref={inboxPreviewRef} />}
-                {newMessages.length > 0 && <FaExclamationCircle className="notification" />}
-                <FaInbox className="icon" onClick={() => handleViewPreview()} />
+  return (
+    userData && (
+      <div className="nav-bar">
+        <div className="nav-container">
+          <div className="nav-main">
+            <div className="nav-prof">
+              <div className="nav-links">
+                {userData.admin ? (
+                  <>
+                    {adminLinks.map((link) => {
+                      console.log(userData);
+                      const isActive =
+                        link.href === "/"
+                          ? pathname === link.href
+                          : pathname.startsWith(link.href);
+                      return (
+                        <Link
+                          href={link.href}
+                          onClick={closeModals}
+                          key={link.name}
+                          className={isActive ? "active-link" : "nav-link"}
+                        >
+                          {link.name}
+                        </Link>
+                      );
+                    })}
+                  </>
+                ) : (
+                  <>
+                    {navLinks.map((link) => {
+                      console.log(userData);
+                      const isActive =
+                        link.href === "/"
+                          ? pathname === link.href
+                          : pathname.startsWith(link.href);
+                      return (
+                        <Link
+                          href={link.href}
+                          onClick={closeModals}
+                          key={link.name}
+                          className={isActive ? "active-link" : "nav-link"}
+                        >
+                          {link.name}
+                        </Link>
+                      );
+                    })}
+                  </>
+                )}
               </div>
-              <IoSettingsSharp className="icon" onClick={goToSettings} />
+              <div className="right-nav">
+                <div className="nav-profile">
+                  Welcome back, {userData?.username}
+                </div>
+                <div className="inbox">
+                  {showPreview && (
+                    <InboxPreview
+                      newMessages={newMessages}
+                      closePreview={() => setShowPreview(false)}
+                      onViewMessage={handleViewMessage}
+                      ref={inboxPreviewRef}
+                    />
+                  )}
+                  {newMessages.length > 0 && (
+                    <FaExclamationCircle className="notification" />
+                  )}
+                  <FaInbox
+                    className="icon"
+                    onClick={() => handleViewPreview()}
+                  />
+                </div>
+                <IoSettingsSharp className="icon" onClick={goToSettings} />
+              </div>
             </div>
           </div>
-        </div>
-        <div className='main-links'>
-          <div className="company-img" style={{ backgroundImage: `url(${companyImage})` }} />
+          <div className="main-links">
+            <div
+              className="company-img"
+              style={{ backgroundImage: `url(${companyImage})` }}
+            />
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  );
 }

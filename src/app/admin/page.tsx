@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation'; // Note: Use 'next/router' instead of 'next/navigation'
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation"; // Note: Use 'next/router' instead of 'next/navigation'
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 export default function Admin() {
-  const [isLoading, setIsLoading] = useState(true)
-  const [isAdmin, setIsAdmin] = useState(false)
+  const [isLoading, setIsLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
   const supabase = createClientComponentClient();
   const router = useRouter();
 
@@ -16,22 +16,22 @@ export default function Admin() {
 
       if (!session.data.session) {
         // If there's no session, redirect to login or home page
-        router.replace('/login');
+        router.replace("/login");
         return;
       }
 
       const { data: user, error } = await supabase
-        .from('users')
-        .select('admin')
-        .eq('email', session.data.session.user.email)
+        .from("users")
+        .select("admin")
+        .eq("email", session.data.session.user.email)
         .single();
 
       if (error || !user || !user.admin) {
         // If there's an error, or user is not admin, redirect to not allowed page
-        router.replace('/not-allowed');
+        router.replace("/not-allowed");
       }
-      setIsLoading(false)
-      setIsAdmin(true)
+      setIsLoading(false);
+      setIsAdmin(true);
     };
 
     checkAdmin();
@@ -49,9 +49,5 @@ export default function Admin() {
     return null;
   }
 
-  return (
-    <div>
-      Admin
-    </div>
-  )
+  return <div>Admin</div>;
 }

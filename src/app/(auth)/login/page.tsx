@@ -1,48 +1,48 @@
-'use client';
+"use client";
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { useRouter } from 'next/navigation';
-import { useState, useEffect } from 'react';
-import { User } from '@supabase/supabase-js';
+import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { User } from "@supabase/supabase-js";
 
-import './style.css';
+import "./style.css";
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [signInError, setSignInError] = useState('');
-  const [signUpError, setSignUpError] = useState('');
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [signInError, setSignInError] = useState("");
+  const [signUpError, setSignUpError] = useState("");
 
   const router = useRouter();
 
   const supabase = createClientComponentClient();
 
-  const companyLogo = '/assets/images/pixel-sky-design-logo-small.png'
+  const companyLogo = "/assets/images/pixel-sky-design-logo-small.png";
 
-  const validateEmail = (email:string) => {
+  const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
-  }
+  };
 
   const handleSignUp = async () => {
-    const {data: existingUser, error: userError} = await supabase
-      .from('users')
+    const { data: existingUser, error: userError } = await supabase
+      .from("users")
       .select()
-      .eq('email', email)
+      .eq("email", email)
       .single();
 
     if (existingUser) {
-      setSignUpError('An account already exists with that email');
+      setSignUpError("An account already exists with that email");
       return;
     }
 
     if (userError && existingUser !== null) {
-      console.error('Error checking for existing user: ', userError);
-      setSignUpError('Error during sign up');
+      console.error("Error checking for existing user: ", userError);
+      setSignUpError("Error during sign up");
       return;
     }
 
@@ -50,13 +50,13 @@ export default function Login() {
       email,
       password,
       options: {
-        emailRedirectTo: `${location.origin}/callback`
-      }
-    })
+        emailRedirectTo: `${location.origin}/callback`,
+      },
+    });
 
     if (signUpResponse.error) {
-      setSignUpError('Error during sign up')
-      console.error('Error during sign up: ', signUpResponse.error.message)
+      setSignUpError("Error during sign up");
+      console.error("Error during sign up: ", signUpResponse.error.message);
       return;
     }
 
@@ -68,121 +68,130 @@ export default function Login() {
         email: signUpResponse.data.user.email,
         admin: false,
         subscription: "Free",
-      }
+      };
 
-      const insertResponse = await supabase
-      .from('users')
-      .insert([clientData])
+      const insertResponse = await supabase.from("users").insert([clientData]);
 
       if (insertResponse.error) {
-        console.error('Error inserting client data: ', insertResponse.error)
+        console.error("Error inserting client data: ", insertResponse.error);
       }
 
-      router.refresh()
-      setEmail('')
-      setPassword('')
+      router.refresh();
+      setEmail("");
+      setPassword("");
     }
-  }
+  };
 
   const handleSignIn = async () => {
     const res = await supabase.auth.signInWithPassword({
       email,
-      password
-    })
+      password,
+    });
 
     if (res.error) {
-      setSignInError('Incorrect email or password')
-      console.error('Error signing in: ', res.error.message)
+      setSignInError("Incorrect email or password");
+      console.error("Error signing in: ", res.error.message);
       return;
     }
 
-    setUser(res.data.user)
+    setUser(res.data.user);
     window.location.reload();
-  }
+  };
 
   const getUser = async () => {
-    const session = await supabase.auth.getSession()
+    const session = await supabase.auth.getSession();
     if (!session.data.session) {
-      setIsLoading(false)
+      setIsLoading(false);
       return;
     }
 
     const response = await supabase.auth.getUser();
-    setUser(response.data.user)
+    setUser(response.data.user);
 
-    const {data, error} = await supabase
-    .from('users')
-    .select('admin')
-    .eq('email', response.data.user?.email)
+    const { data, error } = await supabase
+      .from("users")
+      .select("admin")
+      .eq("email", response.data.user?.email);
 
     if (error) {
-      setIsLoading(false)
+      setIsLoading(false);
       return;
     }
 
     if (data[0].admin) {
-      router.replace('/admin/clients')
+      router.replace("/admin/clients");
       return;
     }
-    router.replace('/');
-  }
+    router.replace("/");
+  };
 
   const handleToForget = () => {
-    router.push('/login/forgot-password')
-  }
+    router.push("/login/forgot-password");
+  };
 
   useEffect(() => {
     getUser();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [supabase])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [supabase]);
 
   useEffect(() => {
     const debounce = setTimeout(() => {
       if (!email) {
-        setEmailError('');
+        setEmailError("");
       } else if (!validateEmail(email)) {
-        setEmailError('Invalid email format')
+        setEmailError("Invalid email format");
       } else {
-        setEmailError('')
+        setEmailError("");
       }
 
       if (!password) {
-        setPasswordError('');
+        setPasswordError("");
       } else if (password.length < 6) {
-        setPasswordError('Password must be at least 6 characters');
+        setPasswordError("Password must be at least 6 characters");
       } else {
-        setPasswordError('');
+        setPasswordError("");
       }
-    }, 500)
-    return () => clearTimeout(debounce)
-  }, [email, password])
+    }, 500);
+    return () => clearTimeout(debounce);
+  }, [email, password]);
 
   if (isLoading) {
     return (
       <div className="loader-container">
-      <span className="loader"></span>
-    </div>
-    )
+        <span className="loader"></span>
+      </div>
+    );
   }
 
   return (
-    <div className='login-main-container'>
+    <div className="login-main-container">
       <div className="logo-login">
-        <div className='company-logo' style={{backgroundImage: `url(${companyLogo})`}} />
+        <div
+          className="company-logo"
+          style={{ backgroundImage: `url(${companyLogo})` }}
+        />
       </div>
-      <div className="login-modal" style={{height: (emailError || passwordError || signInError || signUpError) ? '400px' : '350px'}}>
+      <div
+        className="login-modal"
+        style={{
+          height:
+            emailError || passwordError || signInError || signUpError
+              ? "400px"
+              : "350px",
+        }}
+      >
         <h2>Login</h2>
         <input
-          className={`login-field ${emailError ? 'error' : ''}`}
-          type='email'
-          name='email'
+          className={`login-field ${emailError ? "error" : ""}`}
+          type="email"
+          name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="example@email.com"
         />
 
         <input
-          className={`login-field ${passwordError ? 'error' : ''}`}
+          className={`login-field ${passwordError ? "error" : ""}`}
           type="password"
           name="password"
           value={password}
@@ -195,23 +204,25 @@ export default function Login() {
         {signUpError && <div className="error-message">{signUpError}</div>}
         <button
           className="login-sign-in-btn"
-          type='button'
+          type="button"
           disabled={!!(emailError || passwordError)}
           onClick={() => handleSignIn()}
-          >
+        >
           Sign In
         </button>
         <div className="divide" />
         <button
           className="login-sign-out-btn"
-          type='button'
+          type="button"
           disabled={!!(emailError || passwordError)}
           onClick={() => handleSignUp()}
-          >
+        >
           Sign Up
         </button>
-        <p className="forgot-password" onClick={() => handleToForget()}>Forgot Password</p>
+        <p className="forgot-password" onClick={() => handleToForget()}>
+          Forgot Password
+        </p>
       </div>
     </div>
-  )
+  );
 }

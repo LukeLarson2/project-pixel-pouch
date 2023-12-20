@@ -1,13 +1,13 @@
-'use client';
-import { useState, useEffect } from 'react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+"use client";
+import { useState, useEffect } from "react";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { FaCheck } from "react-icons/fa";
 import { IoArrowBack } from "react-icons/io5";
 
-import formatTimeAgo from '../../_utils/formatTimeAgo';
-import downloadFile from '../../_utils/downloadFile';
-import { useRouter } from 'next/navigation';
-import AddFileModal from '@/app/_components/AddFileModal';
+import formatTimeAgo from "../../_utils/formatTimeAgo";
+import downloadFile from "../../_utils/downloadFile";
+import { useRouter } from "next/navigation";
+import AddFileModal from "@/app/_components/AddFileModal";
 
 type MessageItem = {
   todo_id: number;
@@ -25,114 +25,139 @@ type MessageItem = {
 };
 
 export default function MessageDetails({
-  params
+  params,
 }: {
   params: {
-    messageId: string
-  }
+    messageId: string;
+  };
 }) {
   const [message, setMessage] = useState<MessageItem | null>(null);
-  const [timeAgo, setTimeAgo] = useState('');
+  const [timeAgo, setTimeAgo] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const [fileType, setFileType] = useState('');
-  const [isLoading, setIsLoading] = useState(false)
+  const [fileType, setFileType] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const supabase = createClientComponentClient();
   const router = useRouter();
 
   const getMessage = async () => {
     const { data, error } = await supabase
-      .from('messages')
+      .from("messages")
       .select()
-      .eq('todo_id', params.messageId)
+      .eq("todo_id", params.messageId)
       .single();
 
     if (error) {
-      console.error(error)
+      console.error(error);
       return;
     }
-    setMessage(data)
-    const time = formatTimeAgo(data.date_added)
-    setTimeAgo(time)
-  }
+    setMessage(data);
+    const time = formatTimeAgo(data.date_added);
+    setTimeAgo(time);
+  };
 
   const handleAddFile = (value: boolean) => {
-    setShowModal(value)
-  }
+    setShowModal(value);
+  };
 
   const handleComplete = async (value: boolean) => {
-    setIsLoading(true)
+    setIsLoading(true);
 
     const updateData = {
       complete: value,
-      date_completed: value ? new Date().toISOString() : null
-    }
+      date_completed: value ? new Date().toISOString() : null,
+    };
 
     const { error } = await supabase
-      .from('messages')
+      .from("messages")
       .update(updateData)
-      .eq('todo_id', `${params.messageId}`)
+      .eq("todo_id", `${params.messageId}`);
 
     if (error) {
-      console.error(error)
-      setIsLoading(false)
+      console.error(error);
+      setIsLoading(false);
       return;
     }
     await getMessage();
     setIsLoading(false);
-  }
+  };
 
   const startDownload = async (url: string, type: string) => {
-    setIsLoading(true)
+    setIsLoading(true);
     await downloadFile(url, type);
-    setIsLoading(false)
-  }
+    setIsLoading(false);
+  };
 
   const handleToInbox = () => {
-    router.replace('/inbox')
-  }
+    router.replace("/inbox");
+  };
 
   useEffect(() => {
-    getMessage()
+    getMessage();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params.messageId, supabase])
+  }, [params.messageId, supabase]);
 
   useEffect(() => {
     if (message?.download) {
-      const sliceType = message.storage_url.split('.').pop()?.toLowerCase()
+      const sliceType = message.storage_url.split(".").pop()?.toLowerCase();
       if (sliceType) {
-        setFileType(sliceType)
+        setFileType(sliceType);
       }
     }
-  }, [message])
+  }, [message]);
 
-  return (message && timeAgo) && (
-    <div className="single-message-container">
-      {isLoading && (
-        <div className="loader-container">
-          <span className="loader"></span>
+  return (
+    message &&
+    timeAgo && (
+      <div className="single-message-container">
+        {isLoading && (
+          <div className="loader-container">
+            <span className="loader"></span>
+          </div>
+        )}
+        {showModal && (
+          <AddFileModal
+            handleAddFile={handleAddFile}
+            currentDirId={`${message.dir_id}`}
+          />
+        )}
+        <div className="back-to-inbox" onClick={handleToInbox}>
+          <IoArrowBack /> Back to inbox
         </div>
-      )}
-      {showModal && (
-        <AddFileModal handleAddFile={handleAddFile} currentDirId={`${message.dir_id}`} />
-      )}
-      <div className='back-to-inbox' onClick={handleToInbox}><IoArrowBack /> Back to inbox</div>
-      <h2 className="message-title">Subject: {message.title}</h2>
-      <p className="message-time-ago">Sent {timeAgo}</p>
-      <p className="message-message">{message.message}</p>
-      <div className="btn-placement-message">
-        {message.upload && (
-          <button className="message-btn-upload" onClick={() => handleAddFile(true)}>Upload File</button>
-        )}
-        {message.download && (
-          <button className="message-btn-download" onClick={() => startDownload(message.storage_url, fileType)}>Download File</button>
-        )}
-        {message.complete ? (
-          <button className='todo-done' onClick={() => handleComplete(false)}><FaCheck /> Complete</button>
-        ) : (
-          <button className="todo-not-done" onClick={() => handleComplete(true)}>Mark Complete</button>
-        )}
+        <h2 className="message-title">Subject: {message.title}</h2>
+        <p className="message-time-ago">Sent {timeAgo}</p>
+        <p className="message-message">{message.message}</p>
+        <div className="btn-placement-message">
+          {message.upload && (
+            <button
+              className="message-btn-upload"
+              onClick={() => handleAddFile(true)}
+            >
+              Upload File
+            </button>
+          )}
+          {message.download && (
+            <button
+              className="message-btn-download"
+              onClick={() => startDownload(message.storage_url, fileType)}
+            >
+              Download File
+            </button>
+          )}
+          {message.complete ? (
+            <button className="todo-done" onClick={() => handleComplete(false)}>
+              <FaCheck /> Complete
+            </button>
+          ) : (
+            <button
+              className="todo-not-done"
+              onClick={() => handleComplete(true)}
+            >
+              Mark Complete
+            </button>
+          )}
+        </div>
       </div>
-    </div>
-  )
+    )
+  );
 }

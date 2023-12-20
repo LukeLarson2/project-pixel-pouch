@@ -5,13 +5,12 @@ import {
   FaPinterestSquare,
   FaLinkedin,
   FaMapMarkerAlt,
-  FaMobileAlt
+  FaMobileAlt,
 } from "react-icons/fa";
 
-import '../_stylesheets/footer.css'
+import "../_stylesheets/footer.css";
 
 export default function Footer() {
-
   return (
     <div>
       <div className="footer-top">
@@ -23,7 +22,8 @@ export default function Footer() {
         <p>Olympia, WA</p>
       </div>
       <div className="footer-bottom">
-        <p>Copyright @ 2023
+        <p>
+          Copyright @ 2023
           <a
             href="https://pixelskydesign.com"
             target="_blank"
@@ -49,20 +49,36 @@ export default function Footer() {
           </a>
         </p>
         <div className="socials">
-          <a href="https://www.facebook.com/pixelskywebdesign" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.facebook.com/pixelskywebdesign"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaFacebookSquare className="fb-icon" />
           </a>
-          <a href="http://www.twitter.com/caitlyn_larson" target="_blank" rel="noopener noreferrer">
+          <a
+            href="http://www.twitter.com/caitlyn_larson"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaTwitterSquare className="twit-icon" />
           </a>
-          <a href="https://www.pinterest.com/pixelskydesign/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.pinterest.com/pixelskydesign/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaPinterestSquare className="pin-icon" />
           </a>
-          <a href="https://www.linkedin.com/pub/caitlyn-larson/67/855/24b" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.linkedin.com/pub/caitlyn-larson/67/855/24b"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaLinkedin className="linkin-icon" />
           </a>
         </div>
       </div>
     </div>
-  )
+  );
 }
