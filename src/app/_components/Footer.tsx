@@ -33,7 +33,7 @@ export default function Footer() {
           </a>
           Theme by:
           <a
-            href="https://www.linkedin.com/in/lucas-larson-6a4bb799/"
+            href="https://www.linkedin.com/in/lucas-m-larson/"
             target="_blank"
             rel="noopener noreferrer"
           >
