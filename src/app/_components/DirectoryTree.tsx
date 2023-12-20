@@ -20,6 +20,7 @@ type DirectoryTreeProps = {
   dirId: number;
   handleViewPreview: (value: boolean, id: string) => void;
   handleOptions: (value: boolean, id: string) => void;
+  refreshTree: boolean;
 };
 
 type File = {
@@ -45,6 +46,7 @@ const DirectoryTree: React.FC<DirectoryTreeProps> = ({
   dirId,
   handleViewPreview,
   handleOptions,
+  refreshTree,
 }) => {
   const [subDirectories, setSubDirectories] = useState<Dir[] | null>(null);
   const [files, setFiles] = useState<File[] | null>(null);
@@ -92,6 +94,18 @@ const DirectoryTree: React.FC<DirectoryTreeProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dirId, supabase]);
 
+  useEffect(() => {
+    const refreshData = async () => {
+      const { directoriesData, filesData } = await fetchData(dirId);
+      setSubDirectories(directoriesData || []);
+      setFiles(filesData || []);
+      setIsLoading(false);
+    };
+
+    refreshData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [refreshTree]); // Add refreshTree as a dependency
+
   if (isLoading) {
     return (
       <div className="loader-container">
@@ -116,6 +130,7 @@ const DirectoryTree: React.FC<DirectoryTreeProps> = ({
               dirId={dir.dir_id}
               handleViewPreview={handleViewPreview}
               handleOptions={handleOptions}
+              refreshTree={refreshTree}
             />
           </div>
         </div>

@@ -38,6 +38,7 @@ export default function Clients() {
   const [filePreviewId, setFilePreviewId] = useState("");
   const [selectedDirId, setSelectedDirId] = useState("");
   const [showDirOptions, setShowDirOptions] = useState(false);
+  const [refreshTree, setRefreshTree] = useState(false);
 
   const supabase = createClientComponentClient();
 
@@ -84,19 +85,12 @@ export default function Clients() {
 
   const clearPreview = (value: boolean) => [setShowPreview(value)];
 
-  const handleClientClick = (client_id: string) => {
-    if (selectedClient === client_id) {
-      // Start slide-out animation
-      setSelectedClient("");
-    } else {
-      // Directly select new client
-      setSelectedClient(client_id);
-    }
-  };
-
   const handleOptions = (value: boolean, parent: string) => {
     setSelectedDirId(parent);
     setShowDirOptions(value);
+    if (!value) {
+      setRefreshTree((prev) => !prev); // Toggle state to trigger refresh
+    }
   };
 
   useEffect(() => {
@@ -187,6 +181,7 @@ export default function Clients() {
                 dirId={selectedProject.root_dir}
                 handleViewPreview={handleViewPreview}
                 handleOptions={handleOptions}
+                refreshTree={refreshTree}
               />
             </div>
           </div>
