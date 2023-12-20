@@ -29,6 +29,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: fit-content;
 }
 .admin-client-collection::-webkit-scrollbar {
   display: none;
@@ -46,7 +47,7 @@
   justify-content: flex-start;
   align-items: center;
   font-size: 15px;
-  width: auto;
+  width: fit-content;
   min-width: 200px;
   max-height: 90%;
   box-shadow: 1px 1px 2px #00000080;
@@ -57,37 +58,36 @@
   background-color: #fff;
 }
 
-
 .admin-single-client {
   width: 90%;
   height: auto;
   box-shadow: 1px 1px 2px #00000080;
-  background-color: #63C6AE;
+  background-color: #63c6ae;
   color: #fff;
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
   margin-bottom: 10px;
-  transition: scale .2s ease-in-out, opacity .2s ease-in-out;
+  transition: scale 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
 .admin-client-selected {
   width: 90%;
   height: auto;
   box-shadow: 1px 1px 2px #00000080;
-  background-color: #6C94C7;
+  background-color: #6c94c7;
   color: #fff;
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
   margin-bottom: 10px;
-  transition: scale .2s ease-in-out, opacity .2s ease-in-out;
+  transition: scale 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
 .admin-single-client:hover,
 .admin-client-selected:hover {
   opacity: 50%;
-  scale: .97;
+  scale: 0.97;
 }
 
 .tree-branch {
@@ -104,38 +104,40 @@
   margin-bottom: 10px;
   cursor: pointer;
   box-shadow: 1px 1px 2px #00000080;
-  width: 200px;
+  min-width: 200px;
+  width: fit-content;
   height: 25px;
   padding: 5px;
   padding-left: 10px;
   border-radius: 10px;
-  background-color: #63C6AE;
+  background-color: #63c6ae;
   color: #fff;
   align-items: center;
   display: flex;
-  transition: scale .2s ease-in-out, opacity .2s ease-in-out;
+  transition: scale 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 .branch-name-file {
   font-size: 13px;
   margin-bottom: 10px;
   cursor: pointer;
   box-shadow: 1px 1px 2px #00000080;
-  width: 200px;
+  width: fit-content;
+  min-width: 200px;
   height: 25px;
   padding: 5px;
   padding-left: 10px;
   border-radius: 10px;
-  background-color:#6C94C7;
+  background-color: #666;
   color: #fff;
   align-items: center;
   display: flex;
-  transition: scale .2s ease-in-out, opacity .2s ease-in-out;
+  transition: scale 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
 .branch-name:hover,
 .branch-name-file:hover {
   opacity: 50%;
-  scale: .97;
+  scale: 0.97;
 }
 
 .branch-icon-type {
@@ -150,18 +152,18 @@
   border: none;
   outline: none;
   position: absolute;
-  top: 90%;
-  width:90%;
+  top: 88%;
+  width: 90%;
   height: 40px;
   padding: 10px;
   box-shadow: 1px 1px 2px #00000080;
   border-radius: 5px;
   cursor: pointer;
-  transition: scale .2s ease-in-out, opacity .2s ease-in-out;
+  transition: scale 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
 .admin-add-to-collection:hover {
-  scale: .97;
+  scale: 0.97;
   opacity: 50%;
 }
 

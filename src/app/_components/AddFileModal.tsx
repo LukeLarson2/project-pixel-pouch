@@ -74,9 +74,11 @@ export default function AddFileModal({
     setIsLoading(true);
     const file = event.target.files?.[0];
     if (file) {
+      const sanitizedFileName = file.name.replace(/ /g, "_");
       setFilePath(URL.createObjectURL(file));
       const fileType = file.type.split("/").pop();
       if (fileType) {
+        setFileName(file.name);
         setFileType(fileType);
 
         const imageExtensions = [
@@ -88,13 +90,13 @@ export default function AddFileModal({
           "tiff",
           "webp",
         ];
-        const fileExtension = file.name.split(".").pop()?.toLowerCase();
+        const fileExtension = sanitizedFileName.split(".").pop()?.toLowerCase();
         const isImage = fileExtension
           ? imageExtensions.includes(fileExtension)
           : false;
 
         const storagePath = isImage ? "images" : "docs";
-        const uploadPath = `${storagePath}/${file.name}`;
+        const uploadPath = `${storagePath}/${sanitizedFileName}`;
         setFilePath(uploadPath);
 
         const { error } = await supabase.storage
@@ -153,6 +155,15 @@ export default function AddFileModal({
         )}
         <h2>Upload Project File</h2>
         <FaTimes className="close-modal-icon" onClick={handleCloseModal} />
+        <label htmlFor="file">Select File</label>
+        <div className="file-upload">
+          <input
+            type="file"
+            name="file"
+            className="form-text-field"
+            onChange={fileSelect}
+          />
+        </div>
 
         <label htmlFor="name">File Name</label>
         <input
@@ -163,16 +174,6 @@ export default function AddFileModal({
           value={fileName}
           onChange={(e) => setFileName(e.target.value)}
         />
-
-        <label htmlFor="file">File Name</label>
-        <div className="file-upload">
-          <input
-            type="file"
-            name="file"
-            className="form-text-field"
-            onChange={fileSelect}
-          />
-        </div>
 
         <label htmlFor="description">Description</label>
         <textarea
