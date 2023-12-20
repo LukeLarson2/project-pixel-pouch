@@ -126,7 +126,9 @@ export default function MessageDetails({
         </div>
         <h2 className="message-title">Subject: {message.title}</h2>
         <p className="message-time-ago">Sent {timeAgo}</p>
-        <p className="message-message">{message.message}</p>
+        <p className="message-message" style={{ whiteSpace: "pre-wrap" }}>
+          {message.message}
+        </p>
         <div className="btn-placement-message">
           {message.upload && (
             <button

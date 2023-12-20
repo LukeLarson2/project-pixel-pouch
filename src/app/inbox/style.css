@@ -10,15 +10,15 @@
   margin-right: 20px;
   cursor: pointer;
   color: #fff;
-  transition: background-color .3s ease-in-out, scale .3s ease-in-out;
-  background-color: #63C6AE;
+  transition: background-color 0.3s ease-in-out, scale 0.3s ease-in-out;
+  background-color: #63c6ae;
   font-weight: bold;
   font-size: 17px;
 }
 
 .message-btn-upload:hover {
-  background-color: #63C6AE55;
-  scale: .96;
+  background-color: #63c6ae55;
+  scale: 0.96;
   color: #666;
 }
 
@@ -34,15 +34,15 @@
   margin-right: 20px;
   cursor: pointer;
   color: #fff;
-  transition: background-color .3s ease-in-out, scale .3s ease-in-out;
-  background-color:#6C94C7;
+  transition: background-color 0.3s ease-in-out, scale 0.3s ease-in-out;
+  background-color: #6c94c7;
   font-weight: bold;
   font-size: 17px;
 }
 
 .message-btn-download:hover {
   background-color: #6c93c755;
-  scale: .96;
+  scale: 0.96;
   color: #666;
 }
 
@@ -53,7 +53,6 @@
   margin-top: 20px;
 }
 
-
 .message-time-ago {
   color: #888;
   font-size: 12px;
@@ -63,6 +62,7 @@
 
 .message-title {
   margin: 0px;
+  color: #666;
 }
 
 .message-message {
@@ -72,9 +72,10 @@
   box-shadow: inset 1px 1px 2px #00000080;
   padding: 20px;
   border-radius: 10px;
+  overflow-y: scroll;
 }
 
-.all-messages{
+.all-messages {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -89,23 +90,26 @@
   margin-top: 30px;
   border-radius: 10px;
   background-color: #fff;
+  color: #666;
 }
 
 .all-messages::-webkit-scrollbar-track,
+.message-message::-webkit-scrollbar-track,
 .main-folders-container::-webkit-scrollbar-track {
- background-color: transparent;
+  background-color: transparent;
 }
 .all-messages::-webkit-scrollbar-thumb,
+.message-message::-webkit-scrollbar-thumb,
 .main-folders-container::-webkit-scrollbar-thumb {
   background-color: #666; /* Sets the thumb color to grey */
   border-radius: 10px; /* Makes the thumb rounded */
 }
 
 .all-messages::-webkit-scrollbar,
+.message-message::-webkit-scrollbar,
 .main-folders-container::-webkit-scrollbar {
   width: 10px; /* Adjust as needed */
 }
-
 
 .single-message-container-all {
   display: flex;
@@ -131,7 +135,7 @@
   height: 30px;
   width: 105px;
   justify-content: space-between;
-  color: #63C6AE;
+  color: #63c6ae;
   position: absolute;
   left: 85%;
   top: 10px;
@@ -142,19 +146,19 @@
   text-decoration: underline;
 }
 
-.message-time-ago-all{
+.message-time-ago-all {
   color: #888;
   font-size: 12px;
   margin: 0px;
 }
 
-.message-title-all{
+.message-title-all {
   margin: 0px;
   margin-top: 5px;
 }
 
-.message-message-all{
- height: 50px;
+.message-message-all {
+  height: 50px;
 }
 
 .back-to-inbox {
@@ -167,12 +171,12 @@
   border-radius: 8px;
   box-shadow: 1px 1px 2px #00000080;
   cursor: pointer;
-  color:#666;
-  transition: scale .3s ease-in-out;
+  color: #666;
+  transition: scale 0.3s ease-in-out;
 }
 
 .back-to-inbox:hover {
-  scale: .95
+  scale: 0.95;
 }
 
 .prev-footer {
@@ -181,9 +185,9 @@
   height: 30px;
   justify-content: center;
   align-items: center;
-  color: #6C94C7;
+  color: #6c94c7;
   cursor: pointer;
-  transition: color .3s ease-in-out;
+  transition: color 0.3s ease-in-out;
 }
 
 .prev-footer p {
@@ -194,7 +198,7 @@
 }
 
 .prev-footer:hover {
-  color: #63C6AE;
+  color: #63c6ae;
 }
 
 .prev-header {
@@ -257,7 +261,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   padding: 5px;
-  transition: box-shadow .1s ease-in-out;
+  transition: box-shadow 0.1s ease-in-out;
   cursor: pointer;
   margin-bottom: 20px;
 }
@@ -269,7 +273,7 @@
 }
 
 .message {
-  transition: box-shadow .3s ease-in-out;
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 .message:hover {
@@ -288,14 +292,14 @@
 }
 
 .todo-done:hover {
-  background-color: #63C6AE55;
-  scale: .96;
+  background-color: #63c6ae55;
+  scale: 0.96;
   color: #666;
 }
 
 .todo-not-done:hover {
   background-color: #c6636355;
-  scale: .96;
+  scale: 0.96;
   color: #666;
 }
 
@@ -310,8 +314,8 @@
   border: none;
   cursor: pointer;
   color: #fff;
-  transition: background-color .3s ease-in-out, scale .3s ease-in-out;
-  background-color: #63C6AE;
+  transition: background-color 0.3s ease-in-out, scale 0.3s ease-in-out;
+  background-color: #63c6ae;
   font-weight: bold;
   font-size: 17px;
 }
@@ -327,7 +331,7 @@
   border: none;
   cursor: pointer;
   color: #fff;
-  transition: background-color .3s ease-in-out, scale .3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, scale 0.3s ease-in-out;
   background-color: #c66363;
   font-weight: bold;
   font-size: 17px;
