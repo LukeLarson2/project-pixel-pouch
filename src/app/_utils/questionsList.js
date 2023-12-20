@@ -1,62 +1,68 @@
 const questionList = [
   [
     {
-      label: "",
+      label: "Name",
       table: "users",
       property: "name",
-      placeholder: "name (name of client)",
+      placeholder: "John Jane",
       value: "",
     },
     {
-      label: "",
+      label: "Username",
       table: "users",
       property: "username",
-      placeholder: "username (name of company)",
+      placeholder: "Pixel Sky Design",
       value: "",
     },
     {
-      label: "",
+      label: "Email",
       table: "users",
       property: "email",
-      placeholder: "email",
+      placeholder: "email@example.com",
       value: "",
-    }
+    },
+    {
+      label: "Phone",
+      table: "users",
+      property: "phone",
+      placeholder: "(000) 000-0000",
+      value: "",
+    },
+    {
+      label: "Best time to contact",
+      table: "users",
+      property: "best_time",
+      placeholder: "Morning/Afternoon",
+      value: "",
+    },
   ],
   [
     {
-      label: "",
-      table: "users",
-      property: "phone",
-      placeholder: "phone",
-      value: "",
-    },
-    { label: "best_time", placeholder: "best time to contact", value: "" },
-    {
-      label: "",
+      label: "Address",
       table: "users",
       property: "address",
-      placeholder: "address",
+      placeholder: "123 Fake St",
       value: "",
     },
     {
-      label: "",
+      label: "City",
       table: "users",
       property: "city",
-      placeholder: "city",
+      placeholder: "Seattle",
       value: "",
     },
     {
-      label: "",
+      label: "State",
       table: "users",
       property: "state",
-      placeholder: "state",
+      placeholder: "WA",
       value: "",
     },
     {
-      label: "",
+      label: "Zip",
       table: "users",
       property: "zip",
-      placeholder: "zip",
+      placeholder: "00000",
       value: "",
     },
   ],
@@ -65,7 +71,7 @@ const questionList = [
       label: "Is this a new site or a redesign?",
       table: "projects",
       property: "redesign",
-      placeholder: "",
+      placeholder: "If yes, what is the previous site?",
       value: "",
     },
     {
@@ -99,8 +105,6 @@ const questionList = [
       placeholder: "",
       value: "",
     },
-  ],
-  [
     {
       label: "What is your budget?",
       table: "projects",
@@ -132,8 +136,6 @@ const questionList = [
       placeholder: "",
       value: "",
     },
-  ],
-  [
     {
       label:
         "Do you plan on selling items on the site? If so, how many products? Do you plan on taking credit card payment online? If so, do you already have a process for this?",
@@ -152,18 +154,13 @@ const questionList = [
       placeholder: "",
       value: "",
     },
-  ],
-  [
     {
-      label:
-        "Do you have photos to use on the web site? Do they need to be scanned/adjusted? Do you need help finding images?",
+      label: `Do you have photos to use on the web site? Do they need to be scanned/adjusted? Do you need help finding images?`,
       table: "projects",
       property: "photos",
       placeholder: "",
       value: "",
     },
-  ],
-  [
     {
       label: "Who is writing and typing the text?",
       table: "projects",
@@ -182,13 +179,19 @@ const questionList = [
   ],
   [
     {
-      label: `What other functionality does the site need?
-      Examples include: Online forms, Discussion
-      board/Forum, Shopping cart, E-calendar,
-      E-newsletter, Blog, Search function, Rotating
-      ads or animations, Music or sound effects,
-      Quizzes, surveys, voting, Social media integration
-      Mobile-device responsiveness, Translations`,
+      label: `What other functionality does the site need? Examples include:
+      \u2022 Online forms
+      \u2022 Discussion board/Forum
+      \u2022 Shopping cart
+      \u2022 E-calendar, E-newsletter
+      \u2022 Blog
+      \u2022 Search function
+      \u2022 Rotating ads or animations
+      \u2022 Music or sound effects
+      \u2022 Quizzes,Surveys, Voting
+      \u2022 Social media integration
+      \u2022 Mobile-device responsiveness
+      \u2022 Translations`,
       table: "projects",
       property: "functionality",
       placeholder: "",

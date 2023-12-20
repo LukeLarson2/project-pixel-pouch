@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 import questionsList from "../../_utils/questionsList";
 
 import { FaPlus } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
+import { FaChevronLeft } from "react-icons/fa";
 
 import "./style.css";
 
@@ -87,6 +89,8 @@ export default function AddClient() {
   const [parentDir, setParentDir] = useState(0);
   const [parentProject, setParentProject] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [userCreated, setUserCreated] = useState(false);
+  const [dirCreated, setDirCreated] = useState(false);
 
   const supabase = createClientComponentClient();
   const router = useRouter();
@@ -220,10 +224,12 @@ export default function AddClient() {
     setParentDir(newDirId);
     setNewDirId(newDirId + 1);
     setParentProject(newProjectId);
+    setUserCreated(true);
     setIsLoading(false);
   };
 
   const addProjectDir = async () => {
+    setIsLoading(true);
     const newDir = {
       dir_id: newDirId,
       parent_dir: parentDir,
@@ -240,6 +246,8 @@ export default function AddClient() {
       setIsLoading(false);
       return;
     }
+    setIsLoading(false);
+    setDirCreated(true);
   };
 
   function getSafeValue<T extends object, K extends keyof T>(
@@ -264,6 +272,11 @@ export default function AddClient() {
   return (
     <div className="add-client-main">
       <div className="add-client-modal">
+        {isLoading && (
+          <div className="loader-container">
+            <span className="loader"></span>
+          </div>
+        )}
         {questionsList[currentQuestion].map((question) => {
           const { label, property, placeholder, table } = question;
           if (property !== undefined) {
@@ -281,8 +294,8 @@ export default function AddClient() {
               }
             };
             return (
-              <div key={property}>
-                <label>{label}</label>
+              <div key={property} className="add-client-question">
+                <label style={{ whiteSpace: "pre-line" }}>{label}</label>
                 <input
                   type="text"
                   value={getSafeValue(userData, property as keyof UserDataItem)}
@@ -293,21 +306,47 @@ export default function AddClient() {
             );
           }
         })}
-        <button type="button" onClick={() => changeQuestions(1)}>
-          Next
-        </button>
-        <button type="button" onClick={() => changeQuestions(-1)}>
-          Prev
-        </button>
-        <button type="button" onClick={() => handleSubmit()}>
-          Submit
-        </button>
-        <button type="button" onClick={() => addProjectDir()}>
-          Add Dir
-        </button>
-        <button type="button" onClick={() => addUser()}>
-          Add Auth
-        </button>
+        {currentQuestion < questionsList.length - 1 && (
+          <div className="new-client-next" onClick={() => changeQuestions(1)}>
+            Next Question <FaChevronRight />
+          </div>
+        )}
+        {currentQuestion !== 0 && (
+          <div className="new-client-prev" onClick={() => changeQuestions(-1)}>
+            <FaChevronLeft /> Prev Question
+          </div>
+        )}
+        {currentQuestion >= questionsList.length - 1 && !userCreated && (
+          <button
+            type="button"
+            disabled={isLoading}
+            className="new-client-submit"
+            onClick={() => handleSubmit()}
+          >
+            Create User
+          </button>
+        )}
+        {userCreated && !dirCreated && (
+          <button
+            type="button"
+            disabled={isLoading}
+            className="new-client-add-dir"
+            onClick={() => addProjectDir()}
+          >
+            Add Folders
+          </button>
+        )}
+        {dirCreated && (
+          <button
+            type="button"
+            disabled={isLoading}
+            className="new-client-auth"
+            onClick={() => addUser()}
+            style={{ backgroundColor: "#63c6ae" }}
+          >
+            Send Auth Email
+          </button>
+        )}
       </div>
     </div>
   );

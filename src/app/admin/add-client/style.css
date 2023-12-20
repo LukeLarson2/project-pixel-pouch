@@ -1,0 +1,108 @@
+.add-client-main {
+  display: flex;
+  width: 100dvw;
+  height: 90%;
+  justify-content: center;
+  align-items: center;
+}
+.add-client-modal {
+  display: flex;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px #00000080;
+  width: 50%;
+  height: 73%;
+  padding: 30px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #8888882c;
+  user-select: none;
+}
+.add-client-question {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.add-client-question label {
+  color: #666;
+}
+.add-client-question input {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px #00000080;
+  height: 30px;
+  width: 97%;
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.new-client-next {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 150px;
+  position: absolute;
+  left: 82%;
+  top: -15%;
+  height: 30px;
+  box-shadow: 1px 1px 2px #00000080;
+  background-color: #63c6ae;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: scale 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.new-client-next:hover,
+.new-client-prev:hover {
+  scale: 0.97;
+  opacity: 50%;
+}
+
+.new-client-submit:hover,
+.new-client-add-dir:hover,
+.new-client-auth:hover {
+  scale: 0.99;
+  opacity: 50%;
+}
+.new-client-prev {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 150px;
+  position: absolute;
+  left: 30px;
+  top: -15%;
+  height: 30px;
+  box-shadow: 1px 1px 2px #00000080;
+  background-color: #c66363;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: scale 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+.new-client-submit,
+.new-client-add-dir,
+.new-client-auth {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 250px;
+  height: 40px;
+  box-shadow: 1px 1px 2px #00000080;
+  background-color: #6c94c7;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: scale 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 30px;
+}
