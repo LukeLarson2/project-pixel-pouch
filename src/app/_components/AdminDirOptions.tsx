@@ -6,19 +6,24 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import "../_stylesheets/adminDirOptions.css";
 import { FaTimes } from "react-icons/fa";
 
+import RequestFile from "./RequestFile";
+
 export default function AdminDirOptions({
   parentDirId,
   projectId,
+  userId,
   handleOptions,
 }: {
   parentDirId: string;
   projectId: string;
+  userId: string;
   handleOptions: (value: boolean, id: string) => void;
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const [name, setName] = useState("");
   const [dirName, setDirName] = useState(false);
   const [editDirName, setEditDirName] = useState(false);
+  const [showRequest, setShowRequest] = useState(false);
   const supabase = createClientComponentClient();
 
   const addFolder = async () => {
@@ -73,6 +78,10 @@ export default function AdminDirOptions({
     setDirName(true);
   };
 
+  const handleRequestModal = (value: boolean) => {
+    setShowRequest(value);
+  };
+
   return (
     <div className="admin-dir-options-overlay">
       {isLoading && (
@@ -120,14 +129,24 @@ export default function AdminDirOptions({
           </div>
         </div>
       )}
+      {showRequest && parentDirId && projectId && userId && (
+        <RequestFile
+          dirId={parentDirId}
+          projectId={projectId}
+          userId={userId}
+          handleRequestModal={handleRequestModal}
+        />
+      )}
       <div className="admin-dir-options-modal">
         <h2>Folder Options</h2>
         <button type="button" onClick={addName}>
-          Add folder here
+          Add folder
         </button>
-        <button type="button">Request files here</button>
         <button type="button" onClick={() => setEditDirName(true)}>
           Edit Name
+        </button>
+        <button id="request" type="button" onClick={() => setShowRequest(true)}>
+          Request files
         </button>
         <FaTimes
           className="close-options"

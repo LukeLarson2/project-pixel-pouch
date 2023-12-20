@@ -44,8 +44,6 @@ export default function AddFileModal({
       const { data } = supabase.storage
         .from("client_files")
         .getPublicUrl(filePath);
-
-      console.log(data);
     }
 
     const fileData = {

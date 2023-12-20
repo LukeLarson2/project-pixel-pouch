@@ -1,4 +1,4 @@
-.admin-dir-options-overlay{
+.admin-dir-options-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -10,26 +10,26 @@
   z-index: 100;
   background-color: #00000080;
 }
-.admin-dir-options-modal button{
+.admin-dir-options-modal button {
   width: 90%;
   height: auto;
   box-shadow: 1px 1px 2px #00000080;
-  background-color: #63C6AE;
+  background-color: #63c6ae;
   color: #fff;
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
   margin-bottom: 10px;
-  transition: scale .2s ease-in-out, opacity .2s ease-in-out;
+  transition: scale 0.2s ease-in-out, opacity 0.2s ease-in-out;
   outline: none;
   border: none;
 }
 
 .admin-dir-options-modal button:hover {
-  scale: .97;
+  scale: 0.97;
   opacity: 50%;
 }
-.admin-dir-options-modal{
+.admin-dir-options-modal {
   display: flex;
   flex-direction: column;
   width: 300px;
@@ -45,6 +45,7 @@
 
 .admin-dir-options-modal h2 {
   margin: 0px;
+  color: #666;
 }
 
 .add-dir-name-overlay {
@@ -67,11 +68,12 @@
   height: 24px;
   width: 24px;
   cursor: pointer;
-  transition: scale .2s ease-in-out;
+  transition: scale 0.2s ease-in-out;
+  color: #666;
 }
 
 .close-options:hover {
-  scale: .95
+  scale: 0.95;
 }
 .close-options-name {
   position: absolute;
@@ -80,11 +82,12 @@
   height: 20px;
   width: 20px;
   cursor: pointer;
-  transition: scale .2s ease-in-out;
+  transition: scale 0.2s ease-in-out;
+  color: #666;
 }
 
 .close-options-name:hover {
-  scale: .95
+  scale: 0.95;
 }
 
 .add-dir-name-modal {
@@ -99,37 +102,42 @@
   box-shadow: 1px 1px 2px #00000080;
   position: relative;
 }
-.add-dir-name-modal h2{
+.add-dir-name-modal h2 {
   margin: 0px;
+  color: #666;
 }
-.add-dir-name-modal button{
+.add-dir-name-modal button {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 55%;
   height: 30px;
   box-shadow: 1px 1px 2px #00000080;
-  background-color: #63C6AE;
+  background-color: #63c6ae;
   color: #fff;
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
-  transition: scale .2s ease-in-out, opacity .2s ease-in-out;
+  transition: scale 0.2s ease-in-out, opacity 0.2s ease-in-out;
   outline: none;
   border: none;
 }
 
+#request {
+  background-color: #6c94c7;
+}
+
 .add-dir-name-modal button:hover {
-  scale: .97;
+  scale: 0.97;
   opacity: 50%;
 }
 
-.add-dir-name-modal input{
-height: 10px;
-width: 50%;
-padding: 10px;
-border: none;
-outline: none;
-box-shadow: 1px 1px 2px #00000080;
-border-radius: 10px;
+.add-dir-name-modal input {
+  height: 10px;
+  width: 50%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  box-shadow: 1px 1px 2px #00000080;
+  border-radius: 10px;
 }

@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import DirectoryTree from "../../_components/DirectoryTree";
 import AdminFilePreview from "../../_components/AdminFilePreview";
 import AdminDirOptions from "../../_components/AdminDirOptions";
+import RequestFile from "../../_components/RequestFile";
 
 import { FaPlus } from "react-icons/fa";
 
@@ -119,9 +120,11 @@ export default function Clients() {
           <AdminDirOptions
             parentDirId={selectedDirId}
             projectId={`${selectedProject?.project_id}`}
+            userId={selectedClient}
             handleOptions={handleOptions}
           />
         )}
+
         <div className="admin-section">
           <h2>Clients</h2>
           <div className="admin-client-collection" style={{ zIndex: "10" }}>

@@ -190,7 +190,6 @@ export default function NavBar() {
                 {userData.admin ? (
                   <>
                     {adminLinks.map((link) => {
-                      console.log(userData);
                       const isActive =
                         link.href === "/"
                           ? pathname === link.href
@@ -210,7 +209,6 @@ export default function NavBar() {
                 ) : (
                   <>
                     {navLinks.map((link) => {
-                      console.log(userData);
                       const isActive =
                         link.href === "/"
                           ? pathname === link.href
