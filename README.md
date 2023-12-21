@@ -156,7 +156,7 @@ simply spreading the word!
 
 <h3 align='center'> Luke</h3>
 <h4 align='center'>
-  <a href="https://www.linkedin.com/in/lucas--m-larson/">Linkedin</a> |
+  <a href="https://www.linkedin.com/in/lucas-m-larson/">Linkedin</a> |
   <a href="https://github.com/LukeLarson2">GitHub</a>
 </h4>
 
