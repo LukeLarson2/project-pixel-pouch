@@ -1,36 +1,159 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<a id='readme-top'> </a>
+
+<br />
+<div align="center">
+  <a href="https://github.com/LukeLarson2/project-pixel-pouch">
+    <!-- <img src="" alt="finance tracker logo" width="50" height="50" /> -->
+  </a>
+  <h3 align="center">
+    Pixel Pouch
+  </h3>
+  <p align="center">
+    <br />
+    <a href="https://github.com/LukeLarson2/project-pixel-pouch"><strong>Explore the docs »</strong></a>
+    <br />
+  </p>
+</div>
+
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about">About</a>
+      <ul>
+        <li>
+          <a href="#built-with">Built With</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li>
+          <a href="#prerequisites">Prerequisites</a>
+        </li>
+        <li>
+          <a href="#installation">Installation</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#usage">Usage</a>
+    </li>
+    <li>
+      <a href="#roadmap">Roadmap</a>
+    </li>
+    <li>
+      <a href="#optimizations">Optimizations</a>
+    </li>
+    <li>
+      <a href="#contributing">Contributing</a>
+    </li>
+    <li>
+      <a href="#contact">Contact</a>
+    </li>
+  </ol>
+</details>
+
+## About
+
+<div align="center">
+  <img src="./public/assets/pp-demo-1.gif" alt="project landing page image" width="600px" />
+<br />
+  <img src="./public/assets/pp-demo-2.gif" alt="project landing page image" width="600px" />
+</div>
+
+<br />
+<p>
+  Pixel Pouch is a desktop and mobile friendly app utilizing Next.js and Supabase that is a web-developer to client file-sharing and communication platform that is not just functional, but also intuitive and user-friendly, catering to clients who found existing services like Dropbox overly complex.
+</p>
+
+### Built With
+![node.js](https://img.shields.io/badge/node-%23000000.svg?style=for-the-badge&logo=node.js)
+![React](https://img.shields.io/badge/React-%23000000.svg?style=for-the-badge&logo=react&logoColor)
+![Next.js](https://img.shields.io/badge/webpack-%23000000.svg?style=for-the-badge&logo=next.js)
+![Supabase](https://img.shields.io/badge/babel-%23000000.svg?style=for-the-badge&logo=supabase)
+![Typescript](https://img.shields.io/badge/axios-%23000000.svg?style=for-the-badge&logo=typescript)
+
+<p align="right">
+  (<a href="#readme-top">back to top</a>)
+</p>
 
 ## Getting Started
 
-First, run the development server:
+<p>
+    Instructions to setup Pixel Pouch on your local machine below.
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Prerequisites
+
+![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
+
+```sh
+npm install npm@latest -g
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repo
+   ```sh
+   git clone https://github.com/LukeLarson2/project-pixel-pouch.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Enter your port, API URL, and Github Token in `.env.local` file
+   ```sh
+    NEXT_PUBLIC_SUPABASE_URL = (your supabase database URL)
+    NEXT_PUBLIC_SUPABASE_ANON_KEY = (your supabase token)
+   ```
+4. Run in dev environment.
+   ```sh
+   npm run dev
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Usage
 
-## Learn More
+Pixel Pouch is run on the designated port. It can also be accessed utilizing localhost:PORT directly in the browser.
 
-To learn more about Next.js, take a look at the following resources:
+Run linter: ```npm run lint ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<!-- ROADMAP -->
 
-## Deploy on Vercel
+## Roadmap
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [x] Include a client landing page with folder/file navigation
+- [x] Develop a file preview page with enlarge image previews
+- [x] Implement client new message notification system
+- [x] Integrate upload file to a specified directory
+- [x] Inovate a cleat client managment gui for admin to navigate/create clients, folders and files
+- [ ] Leverage Stripe API for subscriptions
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Optimizations
+
+ 1. Reduction in query times leveraging the RDMBS structure of supabase reducing latency to 53ms on login screen
+ 1. Modernized the user experience with responsive layouts allowing for mobile and desktop usage 
+ 1. Refined the ease of use for clients with eliminating need of file navigation to upload to a particular file
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Feel free to join in! Whether its fixing bugs, improving documentation, or
+simply spreading the word!
+
+<!-- CONTACT -->
+
+## Contact
+
+<h3 align='center'> Luke</h3>
+<h4 align='center'>
+  <a href="https://www.linkedin.com/in/lucas--m-larson/">Linkedin</a> |
+  <a href="https://github.com/LukeLarson2">GitHub</a>
+</h4>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
