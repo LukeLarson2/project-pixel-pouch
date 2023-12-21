@@ -58,8 +58,10 @@
 ## About
 
 <div align="center">
+  <h3>Admin Portal</h3>
   <img src="./public/assets/pp-demo-1.gif" alt="project landing page image" width="600px" />
 <br />
+    <h3>Client Portal</h3>
   <img src="./public/assets/pp-demo-2.gif" alt="project landing page image" width="600px" />
 </div>
 
