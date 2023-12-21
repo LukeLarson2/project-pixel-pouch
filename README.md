@@ -71,7 +71,7 @@
 ### Built With
 ![node.js](https://img.shields.io/badge/node-%23000000.svg?style=for-the-badge&logo=node.js)
 ![React](https://img.shields.io/badge/React-%23000000.svg?style=for-the-badge&logo=react&logoColor)
-![Next.js](https://img.shields.io/badge/webpack-%23000000.svg?style=for-the-badge&logo=next.js)
+![Nextjs](https://img.shields.io/badge/webpack-%23000000.svg?style=for-the-badge&logo=nextjs)
 ![Supabase](https://img.shields.io/badge/babel-%23000000.svg?style=for-the-badge&logo=supabase)
 ![Typescript](https://img.shields.io/badge/axios-%23000000.svg?style=for-the-badge&logo=typescript)
 
