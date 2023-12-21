@@ -65,10 +65,11 @@
 
 <br />
 <p>
-  Pixel Pouch is a desktop and mobile friendly app utilizing Next.js and Supabase that is a web-developer to client file-sharing and communication platform that is not just functional, but also intuitive and user-friendly, catering to clients who found existing services like Dropbox overly complex.
+  Pixel Pouch is a desktop and mobile friendly app utilizing Next.js and Supabase that is a web-developer to client file sharing and communication platform that is not just functional, but also intuitive and user-friendly, catering to clients who found existing services like Dropbox overly complex.
 </p>
 
 ### Built With
+
 ![node.js](https://img.shields.io/badge/node-%23000000.svg?style=for-the-badge&logo=node.js)
 ![React](https://img.shields.io/badge/React-%23000000.svg?style=for-the-badge&logo=react&logoColor)
 ![Nextjs](https://img.shields.io/badge/next.js-%23000000.svg?style=for-the-badge&logo=next.js)
@@ -117,7 +118,7 @@ npm install npm@latest -g
 
 Pixel Pouch is run on the designated port. It can also be accessed utilizing localhost:PORT directly in the browser.
 
-Run linter: ```npm run lint ```
+Run linter: `npm run lint `
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -136,11 +137,12 @@ Run linter: ```npm run lint ```
 
 ## Optimizations
 
- 1. Reduction in query times leveraging the RDMBS structure of supabase reducing latency to 53ms on login screen with 0% error rate and 100 RPS throughput
- 1. Modernized the user experience with responsive layouts allowing for mobile and desktop usage 
- 1. Refined the ease of use for clients with eliminating need of file navigation to upload to a particular file
+1.  Reduction in query times leveraging the RDMBS structure of supabase reducing latency to 53ms on login screen with 0% error rate and 100 RPS throughput
+1.  Modernized the user experience with responsive layouts allowing for mobile and desktop usage
+1.  Refined the ease of use for clients with eliminating need of file navigation to upload to a particular file
 
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Feel free to join in! Whether its fixing bugs, improving documentation, or
