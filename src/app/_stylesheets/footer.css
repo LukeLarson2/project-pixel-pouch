@@ -110,10 +110,11 @@
   }
 }
 @media screen and (max-width: 812px) {
+  footer div {
+    display: none;
+  }
   .footer {
-    width: 100dvw;
-    min-height: 155px;
-    user-select: none;
+    display: none;
   }
 
   .footer-top {

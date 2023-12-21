@@ -409,7 +409,7 @@
   .message-message {
     color: #666;
     width: 87%;
-    height: 30%;
+    height: 55%;
     box-shadow: inset 1px 1px 2px #00000080;
     padding: 20px;
     border-radius: 10px;
@@ -422,13 +422,14 @@
     align-items: flex-start;
     flex-direction: column;
     width: 73%;
-    height: 70%;
+    height: 500px;
     padding: 20px;
     overflow-y: scroll;
     overflow-x: hidden;
     box-shadow: inset 1px 1px 2px #00000080;
     margin-left: 30px;
     margin-top: 30px;
+    margin-bottom: 50px;
     border-radius: 10px;
     background-color: #fff;
     color: #666;
@@ -571,8 +572,7 @@
     align-items: flex-start;
     flex-direction: column;
     width: 100%;
-    height: 90%;
-    max-height: 390px;
+    height: 550px;
     padding: 30px;
     overflow-y: hidden;
   }
