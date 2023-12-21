@@ -71,9 +71,9 @@
 ### Built With
 ![node.js](https://img.shields.io/badge/node-%23000000.svg?style=for-the-badge&logo=node.js)
 ![React](https://img.shields.io/badge/React-%23000000.svg?style=for-the-badge&logo=react&logoColor)
-![Nextjs](https://img.shields.io/badge/webpack-%23000000.svg?style=for-the-badge&logo=nextjs)
-![Supabase](https://img.shields.io/badge/babel-%23000000.svg?style=for-the-badge&logo=supabase)
-![Typescript](https://img.shields.io/badge/axios-%23000000.svg?style=for-the-badge&logo=typescript)
+![Nextjs](https://img.shields.io/badge/next.js-%23000000.svg?style=for-the-badge&logo=next.js)
+![Supabase](https://img.shields.io/badge/supabase-%23000000.svg?style=for-the-badge&logo=supabase)
+![Typescript](https://img.shields.io/badge/typescript-%23000000.svg?style=for-the-badge&logo=typescript)
 
 <p align="right">
   (<a href="#readme-top">back to top</a>)
@@ -136,7 +136,7 @@ Run linter: ```npm run lint ```
 
 ## Optimizations
 
- 1. Reduction in query times leveraging the RDMBS structure of supabase reducing latency to 53ms on login screen
+ 1. Reduction in query times leveraging the RDMBS structure of supabase reducing latency to 53ms on login screen with 0% error rate and 100 RPS throughput
  1. Modernized the user experience with responsive layouts allowing for mobile and desktop usage 
  1. Refined the ease of use for clients with eliminating need of file navigation to upload to a particular file
 
