@@ -169,12 +169,17 @@ export default function AdminFilePreview({
         </div>
         <div className="admin-preview-btns">
           <button
+            aria-label="downlaod file"
             className="admin-download-file"
             onClick={() => downloadFile(file.storage_url, file.type_icon)}
           >
             Download File
           </button>
-          <button className="admin-delete-file" onClick={() => deleteFile()}>
+          <button
+            className="admin-delete-file"
+            aria-label="Delete File"
+            onClick={() => deleteFile()}
+          >
             Delete File
           </button>
         </div>

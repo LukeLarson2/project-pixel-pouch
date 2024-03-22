@@ -345,6 +345,7 @@ export default function AddClient() {
         {currentQuestion >= questionsList.length - 1 && !userCreated && (
           <button
             type="button"
+            aria-label="Create User"
             disabled={isLoading}
             className="new-client-submit"
             onClick={() => handleSubmit()}
@@ -355,6 +356,7 @@ export default function AddClient() {
         {userCreated && !dirCreated && (
           <button
             type="button"
+            aria-label="Add Folder"
             disabled={isLoading}
             className="new-client-add-dir"
             onClick={() => addProjectDir()}
@@ -365,6 +367,7 @@ export default function AddClient() {
         {dirCreated && (
           <button
             type="button"
+            aria-label="Send Auth Email"
             disabled={isLoading}
             className="new-client-auth"
             onClick={() => addUser()}

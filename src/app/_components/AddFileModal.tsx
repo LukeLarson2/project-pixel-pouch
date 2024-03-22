@@ -189,6 +189,7 @@ export default function AddFileModal({
           <button
             type="button"
             className="form-btn-upload"
+            aria-label="upload file"
             disabled={isLoading}
             onClick={handleUpload}
           >

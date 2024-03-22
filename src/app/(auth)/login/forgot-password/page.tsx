@@ -53,6 +53,7 @@ export default function ForgotPassword() {
 
         <button
           type="button"
+          aria-label="Reset Pasword"
           className="login-sign-in-btn"
           onClick={handleRequest}
           style={{ fontSize: "18px" }}

@@ -204,7 +204,8 @@ export default function Login() {
         {signUpError && <div className="error-message">{signUpError}</div>}
         <button
           className="login-sign-in-btn"
-          type="button"
+          aria-label="Sign in"
+          id="sign-in"
           disabled={!!(emailError || passwordError)}
           onClick={() => handleSignIn()}
         >

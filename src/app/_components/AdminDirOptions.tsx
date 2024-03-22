@@ -109,7 +109,7 @@ export default function AdminDirOptions({
               onChange={(e) => setName(e.target.value)}
               placeholder="Folder Name"
             />
-            <button type="button" onClick={addFolder}>
+            <button type="button" aria-label="Add Folder" onClick={addFolder}>
               Add Folder
             </button>
           </div>
@@ -129,7 +129,7 @@ export default function AdminDirOptions({
               onChange={(e) => setName(e.target.value)}
               placeholder="Folder Name"
             />
-            <button type="button" onClick={editFolder}>
+            <button type="button" aria-label="Change Name" onClick={editFolder}>
               Change Name
             </button>
           </div>
@@ -151,16 +151,30 @@ export default function AdminDirOptions({
       )}
       <div className="admin-dir-options-modal">
         <h2>Folder Options</h2>
-        <button type="button" onClick={addName}>
+        <button type="button" aria-label="Add folder" onClick={addName}>
           Add folder
         </button>
-        <button type="button" onClick={() => setEditDirName(true)}>
+        <button
+          type="button"
+          aria-label="Edit Name"
+          onClick={() => setEditDirName(true)}
+        >
           Edit Name
         </button>
-        <button id="request" type="button" onClick={() => setShowRequest(true)}>
+        <button
+          id="request"
+          type="button"
+          aria-label="Request FIles"
+          onClick={() => setShowRequest(true)}
+        >
           Request files
         </button>
-        <button id="request" type="button" onClick={() => handleAddFile(true)}>
+        <button
+          id="request"
+          type="button"
+          aria-label="Add File"
+          onClick={() => handleAddFile(true)}
+        >
           Add file
         </button>
         <FaTimes

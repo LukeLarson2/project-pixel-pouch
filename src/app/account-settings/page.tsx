@@ -108,10 +108,18 @@ export default function Settings() {
             </div>
           </div>
           <div className="settings-btn-pos">
-            <button className="sign-out-btn" onClick={handleSignOut}>
+            <button
+              className="sign-out-btn"
+              aria-label="Sign Out"
+              onClick={handleSignOut}
+            >
               Sign Out
             </button>
-            <button className="sign-out-btn" onClick={handleReset}>
+            <button
+              className="sign-out-btn"
+              aria-label="Reset Password"
+              onClick={handleReset}
+            >
               Reset Password
             </button>
           </div>

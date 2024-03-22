@@ -133,6 +133,7 @@ export default function MessageDetails({
           {message.upload && (
             <button
               className="message-btn-upload"
+              aria-label="upload file"
               onClick={() => handleAddFile(true)}
             >
               Upload File
@@ -141,18 +142,24 @@ export default function MessageDetails({
           {message.download && (
             <button
               className="message-btn-download"
+              aria-label="download file"
               onClick={() => startDownload(message.storage_url, fileType)}
             >
               Download File
             </button>
           )}
           {message.complete ? (
-            <button className="todo-done" onClick={() => handleComplete(false)}>
+            <button
+              className="todo-done"
+              aria-label="completed"
+              onClick={() => handleComplete(false)}
+            >
               <FaCheck /> Complete
             </button>
           ) : (
             <button
               className="todo-not-done"
+              aria-label="mark complete"
               onClick={() => handleComplete(true)}
             >
               Mark Complete

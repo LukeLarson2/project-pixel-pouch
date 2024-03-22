@@ -174,6 +174,7 @@ export default function Clients() {
             })}
             <button
               type="button"
+              aria-label="Add to collection"
               className="admin-add-to-collection"
               onClick={handleAddClient}
             >
@@ -201,7 +202,11 @@ export default function Clients() {
                   </div>
                 );
               })}
-              <button type="button" className="admin-add-to-collection">
+              <button
+                type="button"
+                aria-label="add to collection"
+                className="admin-add-to-collection"
+              >
                 <FaPlus />
               </button>
             </div>

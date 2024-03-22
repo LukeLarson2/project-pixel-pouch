@@ -99,6 +99,7 @@ export default function File({
         </div>
         <button
           className="download-file"
+          aria-label="downlaod file"
           onClick={() => downloadFile(file.storage_url, file.type_icon)}
         >
           Download File

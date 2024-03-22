@@ -124,6 +124,7 @@ export default function RequestFile({
             />
             <button
               type="button"
+              aria-label="Send Request"
               className="request-submit"
               onClick={handleSendRequest}
             >

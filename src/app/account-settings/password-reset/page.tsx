@@ -103,6 +103,7 @@ export default function PasswordReset() {
         )}
         <button
           className="reset-pass-btn"
+          aria-label="Reset"
           disabled={passwordError !== ""}
           onClick={handleReset}
         >
