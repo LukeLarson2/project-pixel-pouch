@@ -3,7 +3,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
-const companyImage = "/assets/images/pixel-sky-design-logo-small.png";
+const companyImage = "/assets/images/caloop_mobile_llcdark_logo.png";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");

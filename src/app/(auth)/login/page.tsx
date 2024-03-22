@@ -21,7 +21,7 @@ export default function Login() {
 
   const supabase = createClientComponentClient();
 
-  const companyLogo = "/assets/images/pixel-sky-design-logo-small.png";
+  const companyLogo = "/assets/images/caloop_mobile_llcdark_logo.png";
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
