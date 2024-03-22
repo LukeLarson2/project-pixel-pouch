@@ -7,15 +7,15 @@
   flex-direction: column;
 }
 .password-reset-modal {
-display: flex;
-flex-direction: column;
-justify-content: space-evenly;
-align-items: center;
-width: 300px;
-background-color: #fff;
-box-shadow: 1px 1px 2px #00000080;
-border-radius: 10px;
-padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 300px;
+  background-color: var(--color-light);
+  box-shadow: 1px 1px 2px #00000080;
+  border-radius: 10px;
+  padding: 20px;
 }
 .confirm-pass-container,
 .new-pass-container {
@@ -23,7 +23,7 @@ padding: 20px;
   width: 100%;
 }
 #confirm-password,
-#new-password{
+#new-password {
   width: 94%;
   height: 20px;
   padding: 10px;
@@ -32,7 +32,7 @@ padding: 20px;
   box-shadow: 0px 0px 2px #888;
   border-radius: 10px;
 }
-.view-pass{
+.view-pass {
   color: #888;
   cursor: pointer;
   position: absolute;
@@ -49,24 +49,23 @@ padding: 20px;
   align-items: center;
   width: 160px;
   height: 40px;
-  background-color: #c66363;
+  background-color: var(--color-danger);
   border-radius: 5px;
   outline: hidden;
   border: none;
   cursor: pointer;
-  color: #fff;
-  transition: background-color .3s ease-in-out, scale .3s ease-in-out;
+  color: var(--color-light);
+  transition: opacity 0.3s ease-in-out, scale 0.3s ease-in-out;
   font-weight: bold;
   font-size: 16px;
 }
 
 .reset-pass-btn:hover {
-  background-color: #c6636355;
-  scale: .96;
-  color: #666;
+  scale: 0.96;
+  opacity: 50%;
 }
 
 .error-message {
-  color: #c66363;
+  color: var(--color-danger);
   font-size: 14px;
 }

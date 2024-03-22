@@ -15,7 +15,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color: #fff;
+  background-color: var(--color-light);
   width: 500px;
   height: 450px;
   padding: 30px;
@@ -56,8 +56,8 @@
   font-size: 18px;
   font-weight: bold;
   box-shadow: 1px 1px 2px #00000080;
-  background-color: #63c6ae;
-  color: #fff;
+  background-color: var(--color-primary);
+  color: var(--color-light);
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;

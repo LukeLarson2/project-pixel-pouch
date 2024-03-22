@@ -104,9 +104,9 @@
     border: none;
     margin-top: 20px;
     cursor: pointer;
-    color: #fff;
+    color: var(--color-light);
     transition: background-color 0.3s ease-in-out, scale 0.3s ease-in-out;
-    background-color: #6c94c7;
+    background-color: var(--color-primary);
     font-weight: bold;
     font-size: 17px;
   }
@@ -121,9 +121,9 @@
     border: none;
     margin-top: 20px;
     cursor: pointer;
-    color: #fff;
+    color: var(--color-light);
     transition: opacity 0.2s ease-in-out, scale 0.2s ease-in-out;
-    background-color: #c66363;
+    background-color: var(--color-danger);
     font-weight: bold;
     font-size: 17px;
   }
@@ -165,7 +165,7 @@
   }
 
   .large-modal-close {
-    color: #fff;
+    color: var(--color-light);
     width: 34px;
     height: 34px;
     position: absolute;
@@ -294,9 +294,9 @@
     border: none;
     margin-top: 20px;
     cursor: pointer;
-    color: #fff;
+    color: var(--color-light);
     transition: background-color 0.3s ease-in-out, scale 0.3s ease-in-out;
-    background-color: #6c94c7;
+    background-color: var(--color-primary);
     font-weight: bold;
     font-size: 17px;
   }
@@ -311,9 +311,9 @@
     border: none;
     margin-top: 20px;
     cursor: pointer;
-    color: #fff;
+    color: var(--color-light);
     transition: opacity 0.2s ease-in-out, scale 0.2s ease-in-out;
-    background-color: #c66363;
+    background-color: var(--color-danger);
     font-weight: bold;
     font-size: 17px;
   }

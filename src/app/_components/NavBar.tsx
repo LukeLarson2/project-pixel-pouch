@@ -55,7 +55,7 @@ export default function NavBar() {
   const inboxPreviewRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
-  const companyImage = "/assets/images/pixel-sky-design-logo-small.png";
+  const companyImage = "/assets/images/caloop_mobile_llcdark_logo.png";
 
   const navLinks = [
     { name: "My Projects", href: "/" },

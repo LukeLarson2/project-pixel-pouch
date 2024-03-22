@@ -5,13 +5,13 @@
     align-items: center;
     width: 160px;
     height: 40px;
-    background-color: #c66363;
+    background-color: var(--color-danger);
     border-radius: 5px;
     outline: hidden;
     border: none;
     cursor: pointer;
-    color: #fff;
-    transition: background-color 0.3s ease-in-out, scale 0.3s ease-in-out;
+    color: var(--color-light);
+    transition: opacity 0.3s ease-in-out, scale 0.3s ease-in-out;
     font-weight: bold;
     margin-bottom: 20px;
     margin-top: 20px;
@@ -20,9 +20,8 @@
   }
 
   .sign-out-btn:hover {
-    background-color: #c6636355;
     scale: 0.96;
-    color: #666;
+    opacity: 50%;
   }
 
   .settings-main {
@@ -61,17 +60,17 @@
   }
 
   .client-edit-btn {
-    color: #63c6ae;
+    color: var(--color-secondary);
     width: 24px;
     height: 24px;
     cursor: pointer;
-    transition: color 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
     position: absolute;
     top: 25px;
     left: 90%;
   }
   .client-edit-btn:hover {
-    color: #6c94c7;
+    opacity: 50%;
   }
 
   .settings-btn-pos {
@@ -87,13 +86,13 @@
     align-items: center;
     width: 150px;
     height: 40px;
-    background-color: #c66363;
+    background-color: var(--color-danger);
     border-radius: 5px;
     outline: hidden;
     border: none;
     cursor: pointer;
-    color: #fff;
-    transition: background-color 0.3s ease-in-out, scale 0.3s ease-in-out;
+    color: var(--color-light);
+    transition: opacity 0.3s ease-in-out, scale 0.3s ease-in-out;
     font-weight: bold;
     margin-bottom: 20px;
     margin-top: 20px;
@@ -102,9 +101,8 @@
   }
 
   .sign-out-btn:hover {
-    background-color: #c6636355;
     scale: 0.96;
-    color: #666;
+    opacity: 50%;
   }
 
   .settings-main {
@@ -144,17 +142,17 @@
   }
 
   .client-edit-btn {
-    color: #63c6ae;
+    color: var(--color-secondary);
     width: 24px;
     height: 24px;
     cursor: pointer;
-    transition: color 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
     position: absolute;
     top: 15px;
     left: 90%;
   }
   .client-edit-btn:hover {
-    color: #6c94c7;
+    opacity: 50%;
   }
 
   .settings-btn-pos {

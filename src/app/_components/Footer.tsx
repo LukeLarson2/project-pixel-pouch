@@ -15,25 +15,27 @@ export default function Footer() {
     <div>
       <div className="footer-top">
         <FaMobileAlt className="footer-top-icons" />
-        <p>425-830-7245</p>
+        <p>541-868-5398</p>
         <IoMdMail className="footer-top-icons" />
-        <p>caitlyn@pixelskydesign.com</p>
+        <p>caloopmobilellc@gmail.com</p>
         <FaMapMarkerAlt className="footer-top-icons" />
-        <p>Olympia, WA</p>
+        <p>Pomona Park, FL</p>
       </div>
       <div className="footer-bottom">
         <p>
           Copyright @ 2023
           <a
-            href="https://pixelskydesign.com"
+            aria-label="View caloop mobile design page"
+            href="https://caloopmobile.up.railway.app/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Pixel Sky Design
+            Caloop Mobile LLC
           </a>
           Theme by:
           <a
-            href="https://www.linkedin.com/in/lucas-m-larson/"
+            aria-label="View devloper page"
+            href="https://caloopmobile.up.railway.app/"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -41,6 +43,7 @@ export default function Footer() {
           </a>
           Powered by:
           <a
+            aria-label="View next.js framework page"
             href="https://nextjs.org"
             target="_blank"
             rel="noopener noreferrer"
@@ -50,6 +53,7 @@ export default function Footer() {
         </p>
         <div className="socials">
           <a
+            aria-label="Visit the Caloop Mobile facebook"
             href="https://www.facebook.com/pixelskywebdesign"
             target="_blank"
             rel="noopener noreferrer"
@@ -57,6 +61,7 @@ export default function Footer() {
             <FaFacebookSquare className="fb-icon" />
           </a>
           <a
+            aria-label="Visit the Cloop Mobile twitter"
             href="http://www.twitter.com/caitlyn_larson"
             target="_blank"
             rel="noopener noreferrer"
@@ -64,6 +69,7 @@ export default function Footer() {
             <FaTwitterSquare className="twit-icon" />
           </a>
           <a
+            aria-label="Visit the Caloop Mobile pinterest"
             href="https://www.pinterest.com/pixelskydesign/"
             target="_blank"
             rel="noopener noreferrer"
@@ -71,7 +77,8 @@ export default function Footer() {
             <FaPinterestSquare className="pin-icon" />
           </a>
           <a
-            href="https://www.linkedin.com/pub/caitlyn-larson/67/855/24b"
+            aria-label="Visit the developer's linked in"
+            href="https://www.linkedin.com/in/lucas-m-larson/"
             target="_blank"
             rel="noopener noreferrer"
           >

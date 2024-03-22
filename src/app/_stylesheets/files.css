@@ -27,12 +27,12 @@
   .dir-icon {
     height: 70%;
     width: 70%;
-    color: #63c6ae;
+    color: var(--color-secondary);
   }
   .file-icon {
     height: 60%;
     width: 60%;
-    color: #6c94c7;
+    color: var(--color-primary);
   }
 
   .add-icon {
@@ -42,7 +42,7 @@
   }
 
   .download-icon {
-    color: #ffffff;
+    color: var(--color-light);
     position: absolute;
     transition: color 0.3s ease-in-out;
     width: 20px;
@@ -52,7 +52,7 @@
   }
 
   .file-icon-container:hover .download-icon {
-    color: #63c6ae;
+    color: var(--color-hover);
   }
 
   .nav-back-icon {
@@ -119,12 +119,12 @@
   .dir-icon {
     height: 70%;
     width: 70%;
-    color: #63c6ae;
+    color: var(--color-secondary);
   }
   .file-icon {
     height: 60%;
     width: 60%;
-    color: #6c94c7;
+    color: var(--color-primary);
   }
 
   .add-icon {
@@ -134,7 +134,7 @@
   }
 
   .download-icon {
-    color: #ffffff;
+    color: var(--color-light);
     position: absolute;
     transition: color 0.3s ease-in-out;
     width: 20px;
@@ -144,7 +144,7 @@
   }
 
   .file-icon-container:hover .download-icon {
-    color: #63c6ae;
+    color: var(--color-hover);
   }
 
   .nav-back-icon {

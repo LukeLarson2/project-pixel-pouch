@@ -56,8 +56,8 @@
     top: -15%;
     height: 30px;
     box-shadow: 1px 1px 2px #00000080;
-    background-color: #63c6ae;
-    color: #fff;
+    background-color: var(--color-secondary);
+    color: var(--color-light);
     border-radius: 5px;
     cursor: pointer;
     transition: scale 0.2s ease-in-out, opacity 0.2s ease-in-out;
@@ -85,8 +85,8 @@
     top: -15%;
     height: 30px;
     box-shadow: 1px 1px 2px #00000080;
-    background-color: #c66363;
-    color: #fff;
+    background-color: var(--color-danger);
+    color: var(--color-light);
     border-radius: 5px;
     cursor: pointer;
     transition: scale 0.2s ease-in-out, opacity 0.2s ease-in-out;
@@ -100,8 +100,8 @@
     width: 250px;
     height: 40px;
     box-shadow: 1px 1px 2px #00000080;
-    background-color: #6c94c7;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--color-light);
     border-radius: 5px;
     cursor: pointer;
     transition: scale 0.2s ease-in-out, opacity 0.2s ease-in-out;
@@ -173,8 +173,8 @@
     top: 98%;
     height: 30px;
     box-shadow: 1px 1px 2px #00000080;
-    background-color: #63c6ae;
-    color: #fff;
+    background-color: var(--color-secondary);
+    color: var(--color-light);
     border-radius: 5px;
     cursor: pointer;
     transition: scale 0.2s ease-in-out, opacity 0.2s ease-in-out;
@@ -202,8 +202,8 @@
     top: 98%;
     height: 30px;
     box-shadow: 1px 1px 2px #00000080;
-    background-color: #c66363;
-    color: #fff;
+    background-color: var(--color-danger);
+    color: var(--color-light);
     border-radius: 5px;
     cursor: pointer;
     transition: scale 0.2s ease-in-out, opacity 0.2s ease-in-out;
@@ -217,8 +217,8 @@
     width: 250px;
     height: 40px;
     box-shadow: 1px 1px 2px #00000080;
-    background-color: #6c94c7;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--color-light);
     border-radius: 5px;
     cursor: pointer;
     transition: scale 0.2s ease-in-out, opacity 0.2s ease-in-out;

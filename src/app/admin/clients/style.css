@@ -23,7 +23,7 @@
     margin-right: 20px;
     position: relative;
     overflow-y: scroll;
-    background-color: #fff;
+    background-color: var(--color-light);
   }
 
   .admin-section {
@@ -83,7 +83,7 @@
     padding: 20px;
     margin-right: 20px;
     overflow-y: scroll;
-    background-color: #fff;
+    background-color: var(--color-light);
     overflow-x: hidden;
   }
 
@@ -91,8 +91,8 @@
     width: 90%;
     height: auto;
     box-shadow: 1px 1px 2px #00000080;
-    background-color: #63c6ae;
-    color: #fff;
+    background-color: var(--color-secondary);
+    color: var(--color-light);
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
@@ -104,8 +104,8 @@
     width: 90%;
     height: auto;
     box-shadow: 1px 1px 2px #00000080;
-    background-color: #6c94c7;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--color-light);
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
@@ -141,8 +141,8 @@
     padding: 5px;
     padding-left: 10px;
     border-radius: 10px;
-    background-color: #63c6ae;
-    color: #fff;
+    background-color: var(--color-secondary);
+    color: var(--color-light);
     align-items: center;
     display: flex;
     transition: scale 0.2s ease-in-out, opacity 0.2s ease-in-out;
@@ -160,7 +160,7 @@
     border-radius: 10px;
     background-color: #666;
     position: relative;
-    color: #fff;
+    color: var(--color-light);
     align-items: center;
     display: flex;
     transition: scale 0.2s ease-in-out, opacity 0.2s ease-in-out;
@@ -180,7 +180,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
+    background-color: var(--color-light);
     border: none;
     outline: none;
     position: absolute;
@@ -251,7 +251,7 @@
     margin-right: 20px;
     position: relative;
     overflow-y: scroll;
-    background-color: #fff;
+    background-color: var(--color-light);
   }
 
   .admin-section {
@@ -311,7 +311,7 @@
     padding: 20px;
     margin-right: 20px;
     overflow-y: scroll;
-    background-color: #fff;
+    background-color: var(--color-light);
     overflow-x: hidden;
   }
 
@@ -319,8 +319,8 @@
     width: 90%;
     height: auto;
     box-shadow: 1px 1px 2px #00000080;
-    background-color: #63c6ae;
-    color: #fff;
+    background-color: var(--color-secondary);
+    color: var(--color-light);
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
@@ -332,8 +332,8 @@
     width: 90%;
     height: auto;
     box-shadow: 1px 1px 2px #00000080;
-    background-color: #6c94c7;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--color-light);
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
@@ -369,8 +369,8 @@
     padding: 5px;
     padding-left: 10px;
     border-radius: 10px;
-    background-color: #63c6ae;
-    color: #fff;
+    background-color: var(--color-secondary);
+    color: var(--color-light);
     align-items: center;
     display: flex;
     transition: scale 0.2s ease-in-out, opacity 0.2s ease-in-out;
@@ -388,7 +388,7 @@
     border-radius: 10px;
     background-color: #666;
     position: relative;
-    color: #fff;
+    color: var(--color-light);
     align-items: center;
     display: flex;
     transition: scale 0.2s ease-in-out, opacity 0.2s ease-in-out;
@@ -408,7 +408,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
+    background-color: var(--color-light);
     border: none;
     outline: none;
     position: absolute;

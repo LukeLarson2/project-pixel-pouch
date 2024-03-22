@@ -1,4 +1,4 @@
-.add-modal-overlay{
+.add-modal-overlay {
   display: flex;
   width: 100dvw;
   height: 100dvh;
@@ -10,20 +10,20 @@
   left: 0;
   z-index: 10;
 }
-.add-modal{
+.add-modal {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   width: 400px;
   height: 460px;
-  background-color: #ffffff;
+  background-color: var(--color-light);
   border-radius: 20px;
   position: relative;
   flex-direction: column;
   padding: 20px;
   padding-left: 40px;
   padding-right: 40px;
-  font-family: 'PT Sans', sans-serif;
+  font-family: "PT Sans", sans-serif;
   cursor: default;
 }
 
@@ -34,21 +34,19 @@
   margin-top: 30px;
 }
 
-
-
 .close-modal-icon {
   position: absolute;
   top: 20px;
   left: 20px;
   cursor: pointer;
-  transition: scale .3 ease-in-out;
+  transition: scale 0.3 ease-in-out;
   color: #666;
   height: 25px;
   width: 25px;
 }
 
 .close-modal-icon:hover {
-  scale: .95
+  scale: 0.95;
 }
 
 .add-modal h2 {
@@ -58,7 +56,7 @@
 
 .form-text-field {
   width: 98%;
-  font-family: 'PT Sans', sans-serif;
+  font-family: "PT Sans", sans-serif;
   padding: 5px;
   border-radius: 5px;
   border: none;
@@ -91,14 +89,14 @@
   align-items: center;
   width: 130px;
   height: 30px;
-  background-color: #6C94C7;
+  background-color: var(--color-primary);
   border-radius: 10px;
   outline: hidden;
   border: none;
   margin-left: 10px;
   cursor: pointer;
-  color: #fff;
-  transition: background-color .3s ease-in-out, scale .3s ease-in-out;
+  color: var(--color-light);
+  transition: opacity 0.3s ease-in-out, scale 0.3s ease-in-out;
   font-weight: bold;
 }
 
@@ -113,21 +111,15 @@
   border: none;
   margin-left: 10px;
   cursor: pointer;
-  color: #fff;
-  transition: background-color .3s ease-in-out, scale .3s ease-in-out;
-  background-color: #63C6AE;
+  color: var(--color-light);
+  transition: opacity 0.3s ease-in-out, scale 0.3s ease-in-out;
+  background-color: var(--color-secondary);
   font-weight: bold;
   font-size: 17px;
 }
 
+.form-btn-upload:hover,
 .form-btn:hover {
-  background-color: #6c93c755;
-  scale: .96;
-  color: #666;
-}
-
-.form-btn-upload:hover {
-  background-color: #63C6AE55;
-  scale: .96;
-  color: #666;
+  opacity: 50%;
+  scale: 0.96;
 }

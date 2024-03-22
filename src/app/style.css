@@ -1,3 +1,12 @@
+:root {
+  --color-light: #ffffff;
+  --color-primary: #072337;
+  --color-secondary: #117b6d;
+  --color-hover: #6c94c7;
+  --color-danger: #ad333a;
+  --color-dark: #020202;
+}
+
 @media screen and (min-width: 813px) {
   body {
     margin: 0px;
@@ -31,7 +40,7 @@
     display: block;
     margin: 15px auto;
     position: relative;
-    color: #63c6ae;
+    color: var(--color-secondary);
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
   }
@@ -45,12 +54,12 @@
     top: 50%;
     left: 50%;
     transform: scale(0.5) translate(0, 0);
-    background-color: #63c6ae;
+    background-color: var(--color-secondary);
     border-radius: 50%;
     animation: animloader 1s infinite ease-in-out;
   }
   .loader::before {
-    background-color: #6c94c7;
+    background-color: var(--color-primary);
     transform: scale(0.5) translate(-48px, -48px);
   }
 
@@ -101,7 +110,7 @@
     display: block;
     margin: 15px auto;
     position: relative;
-    color: #63c6ae;
+    color: var(--color-secondary);
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
   }
@@ -115,12 +124,12 @@
     top: 50%;
     left: 50%;
     transform: scale(0.5) translate(0, 0);
-    background-color: #63c6ae;
+    background-color: var(--color-secondary);
     border-radius: 50%;
     animation: animloader 1s infinite ease-in-out;
   }
   .loader::before {
-    background-color: #6c94c7;
+    background-color: var(--color-primary);
     transform: scale(0.5) translate(-48px, -48px);
   }
 

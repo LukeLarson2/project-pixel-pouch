@@ -5,7 +5,7 @@ import NavBar from "./_components/NavBar";
 import "./style.css";
 
 export const metadata: Metadata = {
-  title: "Cumulus",
+  title: "Pixel Pouch",
   description:
     "Secure and streamline file storage and messaging from web developer to client",
 };

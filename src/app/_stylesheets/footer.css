@@ -19,7 +19,7 @@
   }
 
   .footer-top-icons {
-    color: #63c6ae;
+    color: var(--color-light);
     font-size: 32px;
     margin-right: 5px;
   }
@@ -31,7 +31,7 @@
   }
 
   .footer-top p:hover {
-    color: #6c94c7;
+    color: var(--color-hover);
     text-decoration: underline;
   }
 
@@ -59,13 +59,13 @@
   }
 
   .footer-bottom p a:hover {
-    color: #6c94c7;
+    color: var(--color-hover);
   }
 
   .socials {
     display: flex;
     width: 120px;
-    justify-content: space-between;
+    justify-content: space-evenly;
     cursor: pointer;
   }
 
@@ -102,11 +102,21 @@
     transition: color 0.3s ease-in-out;
   }
 
+  .git-icon {
+    color: #adadad;
+    background-color: #fff;
+    border-radius: 10%;
+    width: 24px;
+    height: 24px;
+    transition: color 0.3s ease-in-out;
+  }
+
   .fb-icon:hover,
   .twit-icon:hover,
   .pin-icon:hover,
-  .linkin-icon:hover {
-    color: #6c94c7;
+  .linkin-icon:hover,
+  .git-icon:hover {
+    color: var(--color-hover);
   }
 }
 @media screen and (max-width: 812px) {
@@ -131,7 +141,7 @@
   }
 
   .footer-top-icons {
-    color: #63c6ae;
+    color: var(--color-light);
     font-size: 32px;
     margin-right: 5px;
   }
@@ -141,7 +151,7 @@
   }
 
   .footer-top p:hover {
-    color: #6c94c7;
+    color: var(--color-hover);
     text-decoration: underline;
   }
 
@@ -171,13 +181,13 @@
   }
 
   .footer-bottom p a:hover {
-    color: #6c94c7;
+    color: var(--color-hover);
   }
 
   .socials {
     display: flex;
     width: 120px;
-    justify-content: space-between;
+    justify-content: space-evenly;
     cursor: pointer;
   }
 
@@ -213,11 +223,20 @@
     height: 24px;
     transition: color 0.3s ease-in-out;
   }
+  .git-icon {
+    color: #adadad;
+    background-color: #fff;
+    border-radius: 10%;
+    width: 24px;
+    height: 24px;
+    transition: color 0.3s ease-in-out;
+  }
 
   .fb-icon:hover,
   .twit-icon:hover,
   .pin-icon:hover,
-  .linkin-icon:hover {
-    color: #6c94c7;
+  .linkin-icon:hover,
+  .git-icon:hover {
+    color: var(--color-hover);
   }
 }

@@ -16,7 +16,7 @@
     height: 60px;
     justify-content: flex-end;
     align-items: center;
-    background-color: #63c6ae;
+    background-color: var(--color-primary);
   }
 
   .company-img {
@@ -30,12 +30,13 @@
 
   .main-links {
     display: flex;
-    background-color: #fff;
-    color: #000;
+    background-color: var(--color-light);
+    color: var(--color-dark);
     height: 130px;
     width: 100%;
     justify-content: flex-start;
     align-items: center;
+    padding-left: 30px;
   }
 
   .nav-links {
@@ -47,7 +48,7 @@
 
   .nav-link:hover,
   .active-link:hover {
-    color: #6c94c7;
+    color: var(--color-hover);
   }
 
   .nav-link,
@@ -56,7 +57,7 @@
     margin-right: 20px;
     width: fit-content;
     transition: color 0.3s ease-in-out;
-    color: #fff;
+    color: var(--color-light);
   }
 
   .active-link {
@@ -86,7 +87,7 @@
     justify-content: flex-end;
     margin-right: 20px;
     font-size: 18px;
-    color: #fff;
+    color: var(--color-light);
   }
 
   .inbox {
@@ -95,7 +96,7 @@
   }
 
   .notification {
-    color: #c66363;
+    color: var(--color-danger);
     position: absolute;
     margin-left: 15px;
     margin-top: -4px;
@@ -103,7 +104,7 @@
   }
 
   .icon {
-    color: #fff;
+    color: var(--color-light);
     font-size: 25px;
     cursor: pointer;
     margin-right: 10px;
@@ -111,7 +112,7 @@
   }
 
   .icon:hover {
-    color: #6c94c7;
+    color: var(--color-hover);
   }
 }
 @media screen and (max-width: 812px) {
@@ -132,7 +133,7 @@
     height: 60px;
     justify-content: flex-end;
     align-items: center;
-    background-color: #63c6ae;
+    background-color: var(--color-primary);
   }
 
   .company-img {
@@ -146,8 +147,8 @@
 
   .main-links {
     display: flex;
-    background-color: #fff;
-    color: #000;
+    background-color: var(--color-light);
+    color: var(--color-dark);
     height: 130px;
     width: 100%;
     justify-content: center;
@@ -163,7 +164,7 @@
 
   .nav-link:hover,
   .active-link:hover {
-    color: #6c94c7;
+    color: var(--color-hover);
   }
 
   .nav-link,
@@ -172,7 +173,7 @@
     margin-right: 20px;
     width: fit-content;
     transition: color 0.3s ease-in-out;
-    color: #fff;
+    color: var(--color-light);
   }
 
   .active-link {
@@ -204,7 +205,7 @@
   }
 
   .notification {
-    color: #c66363;
+    color: var(--color-danger);
     position: absolute;
     margin-left: 15px;
     margin-top: -4px;
@@ -212,7 +213,7 @@
   }
 
   .icon {
-    color: #fff;
+    color: var(--color-light);
     font-size: 25px;
     cursor: pointer;
     margin-right: 10px;
@@ -220,6 +221,6 @@
   }
 
   .icon:hover {
-    color: #6c94c7;
+    color: var(--color-hover);
   }
 }
